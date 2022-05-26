@@ -79,7 +79,7 @@
         <section class="flex gap-14 justify-center mt-20 mb-20 cards flex-wrap">
             <?php foreach ($products as $product) {  ?>
                 <!-- loop through the products -->
-                <div class="card p-6 bg-white shadow-lg" style="width: 18rem">
+                <div class="card p-6 bg-white shadow-lg hover:shadow-black duration-500git" style="width: 18rem">
                     <div>
                         <img src="./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>

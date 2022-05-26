@@ -41,6 +41,10 @@ if (isset($_POST["cat_id"])) {
             color: #080808;
             font-weight: bold;
         }
+
+        .ink {
+            font-family: ink free;
+        }
     </style>
     <section class="mainabout">
         <header>
@@ -53,9 +57,16 @@ if (isset($_POST["cat_id"])) {
 
     <!-- end navbar -->
 
+    <section class="bg-black my-5 flex flex-wrap">
+        <img src="./public/img/giftcard.png" class="flex justify-start" alt="gift card">
+        <h1 class="text-white ink text-5xl m-auto py-10 px-5 flex justify-center">Our Products</h1>
+    </section>
+
+
 
     <div class="flex gap-5 justify-center py-16 flex-wrap ">
-    <a href="<?php echo BASE_URL; ?>productslist" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza"> All</a>
+
+        <a href="<?php echo BASE_URL; ?>productslist" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza duration-500"> All</a>
 
         <?php
         foreach ($categories as $category) :
@@ -64,7 +75,7 @@ if (isset($_POST["cat_id"])) {
                 <form id="catPro" method="post" action="">
                     <input type="hidden" name="cat_id" id="cat_id">
                 </form>
-                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza">
+                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza duration-500">
                     <?php
                     echo $category['cat_title'];
                     ?>
@@ -75,15 +86,14 @@ if (isset($_POST["cat_id"])) {
                     ?>
                 </button>
             </li>
-            <?php
+        <?php
         endforeach;
-            ?>
+        ?>
     </div>
     <section class=" pb-5 pt-5 ">
-        <!-- <h1 class="text-5xl font-bold ink-free text-black text-center ">Our Products</h1> -->
         <section class="flex gap-4 md:gap-6 justify-center md:max-w-2xl lg:max-w-7xl mx-auto flex-wrap">
             <?php foreach ($products as $product) : ?>
-                <div class="card p-6 bg-white shadow-lg mb-20">
+                <div class="card p-6 bg-white shadow-lg hover:shadow-black duration-500 ease-in-out mb-20">
                     <div>
                         <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>

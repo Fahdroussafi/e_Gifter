@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <!-- <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css"> -->
-    <!-- <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css"> -->
+    <!-- <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" /> -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <script src="https://www.paypal.com/sdk/js?client-id=your client id"></script>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AQv4lsU6qXNa1XCpCZRtvK6aIPTBC-YPx59giDKGlXWvKDPZRze6oNcrrdXIIFbO7ayGMh_W9MzuSalJ&components=buttons"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- <link href="./views/src/output.css" rel="stylesheet"> -->
@@ -24,7 +25,7 @@
 // echo'</pre>';
 ?>
 
-
+<body>
 <a href="<?php echo BASE_URL ?>productslist">Back</a>
 
 <div class="container">
@@ -99,35 +100,15 @@
         </div>
     </div>
 </div>
+</body>
+
 <script>
-  let amount = document.querySelector('#amount').dataset.amount;
-  // decrese the amount by 1 every time the user clicks on the minus button
-    document.querySelector('#minus').addEventListener('click', function() {
-        let amount = document.querySelector('#amount').dataset.amount;
-        amount--;
-        document.querySelector('#amount').dataset.amount = amount;
-        document.querySelector('#amount').innerHTML = amount + ' $';
-    });
-  let finalAmount = Math.floor(amount / 9.86);
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: finalAmount.toString()
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      // This function captures the funds from the transaction.
-      return actions.order.capture().then(function(details) {
-        // This function shows a transaction success message to your buyer.
-        alert('Commande effectuée par ' + details.payer.name.given_name);
-        document.querySelector('#addOrder').submit();
-      });
-    }
-  }).render('#paypal-button-container');
-  //This function displays Smart Payment Buttons on your web page.
+    paypal.Buttons({
+  style: {
+    layout: 'vertical',
+    color:  'blue',
+    shape:  'rect',
+    label:  'paypal'
+  }
+}).render('#paypal-button-container');
 </script>

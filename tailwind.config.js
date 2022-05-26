@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'ink': 'Ink Free',
+        'ink': 'ink free',
         'proza': 'Proza Libre',
       },
       screens: {
