@@ -19,7 +19,7 @@ if (isset($_POST["cat_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css"> 
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
@@ -41,10 +41,6 @@ if (isset($_POST["cat_id"])) {
             color: #080808;
             font-weight: bold;
         }
-
-        .proza {
-            font-family: 'Proza Libre', sans-serif;
-        }
     </style>
     <section class="mainabout">
         <header>
@@ -59,6 +55,8 @@ if (isset($_POST["cat_id"])) {
 
 
     <div class="flex gap-5 justify-center py-16 bg-green-50 flex-wrap ">
+    <a href="<?php echo BASE_URL; ?>productslist" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza"> All</a>
+
         <?php
         foreach ($categories as $category) :
         ?>
@@ -66,7 +64,7 @@ if (isset($_POST["cat_id"])) {
                 <form id="catPro" method="post" action="">
                     <input type="hidden" name="cat_id" id="cat_id">
                 </form>
-                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 ">
+                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza">
                     <?php
                     echo $category['cat_title'];
                     ?>
@@ -84,8 +82,7 @@ if (isset($_POST["cat_id"])) {
     <section class="bg-green-50 pb-5 pt-5 ">
         <!-- <h1 class="text-5xl font-bold ink-free text-black text-center ">Our Products</h1> -->
         <section class="flex gap-4 md:gap-6 justify-center md:max-w-2xl lg:max-w-7xl mx-auto flex-wrap">
-            <?php foreach ($products as $product) {  ?>
-                <!-- loop through the products -->
+            <?php foreach ($products as $product) : ?>
                 <div class="card p-6 bg-white">
                     <div>
                         <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $product['product_image'] ?>" alt="image">
@@ -96,7 +93,8 @@ if (isset($_POST["cat_id"])) {
                     </div>
                     <div class="button flex gap-2 justify-center">
 
-                        <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a>
+                        <!-- <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a> -->
+
 
                         <form id="form" method="post" action="<?php echo BASE_URL; ?>show">
                             <input type="hidden" name="product_id" id="product_id">
@@ -107,7 +105,7 @@ if (isset($_POST["cat_id"])) {
                     </div>
                 </div>
 
-            <?php } ?>
+            <?php endforeach; ?>
 
         </section>
     </section>

@@ -1,43 +1,48 @@
 <?php
 
-class Product{
-    static public function getAll(){
-        $stmt = DB::connect()->prepare('SELECT * FROM products');
-        $stmt->execute(); 
-        return $stmt->fetchAll();
-        $stmt->close();
-        $stmt =null; 
+class Product
+{
+    static public function getAll()
+    {
+        $stmt = DB::connect()->prepare('SELECT * FROM products where product_quantity > 0');
+        $stmt->execute();
+        return $stmt->fetchAll(); // returns an array of arrays
+        $stmt->close(); // close the statement
+        $stmt = null; // close connection
     }
-    static public function getRandom($count){
-        $stmt = DB::connect()->prepare("SELECT * FROM products WHERE product_quantity > 0 order by rand() limit ".$count);
+    static public function getRandom($count)
+    {
+        $stmt = DB::connect()->prepare("SELECT * FROM products WHERE product_quantity > 0 order by rand() limit " . $count);
         $stmt->execute();
         return $stmt->fetchAll();
-        // $stmt->close();
-        $stmt =null;
+        $stmt->close();
+        $stmt = null;
     }
-    static public function getProductByCat($data){
+    static public function getProductByCat($data)
+    {
         $id = $data['id'];
-        try{
+        try {
             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
             $stmt->execute(array(":id" => $id));
             return $stmt->fetchAll();
-            // $stmt->close(); 
-            $stmt =null;
-        }catch(PDOException $ex){
-            echo "erreur " .$ex->getMessage();
+            $stmt->close();
+            $stmt = null;
+        } catch (PDOException $ex) {
+            echo "erreur " . $ex->getMessage();
         }
     }
-    static public function getProductById($data){
+    static public function getProductById($data)
+    {
         $id = $data['id'];
-        try{
+        try {
             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
             return $product;
-            // $stmt->close();
-            $stmt =null;
-        }catch(PDOException $ex){
-            echo "erreur " .$ex->getMessage();
+            $stmt->close();
+            $stmt = null;
+        } catch (PDOException $ex) {
+            echo "erreur " . $ex->getMessage();
         }
     }
 

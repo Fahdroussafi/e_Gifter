@@ -39,7 +39,7 @@
                         <div class="dropdown dropdown-end">
                             <button tabindex="0" class=" flex-wrap">
                                 <div class="w-10 rounded-full">
-                                    <img src="https://media.discordapp.net/attachments/922798224199266344/977949376955703406/guest-48.png">
+                                    <img src="./public/img/user.png">
                                 </div>
                             </button>
                             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow text-white bg-base-100 rounded-box w-52">

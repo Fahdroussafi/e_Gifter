@@ -32,7 +32,4 @@ if(isset($_GET['page'])){
     $home->index("home");
 }
 
-// require_once("./views/includes/footer.php");
-
-
 
