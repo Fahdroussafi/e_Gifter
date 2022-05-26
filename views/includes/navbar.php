@@ -27,7 +27,7 @@
                         <button tabindex="0" class="flex-wrap">
                             <div class="w-10 rounded-full">
                                 <a href="<?php echo BASE_URL; ?>login">
-                                    <img src="https://media.discordapp.net/attachments/922798224199266344/977949376955703406/guest-48.png">
+                                    <img src="./public/img/user.png">
                                 </a>
                             </div>
                 </button>

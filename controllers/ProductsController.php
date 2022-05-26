@@ -32,6 +32,13 @@ class ProductsController
             return $product;
         }
     }
+
+    public function getValue()
+    { {
+            $value = Product::getValues();
+            return $value;
+        }
+    }
     public function emptyCart($id, $price)
     {
         unset($_SESSION["products_" . $id]);

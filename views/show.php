@@ -1,6 +1,12 @@
 <?php
-    $data = new ProductsController();
-    $product = $data->getProduct();
+
+$data = new ProductsController();
+$product = $data->getProduct();
+// var_dump($product);
+$value = $data->getValue();
+// var_dump($value);
+// die;
+
 ?>
 
 <!DOCTYPE html>
@@ -32,44 +38,54 @@
                         <div class="card-header bg-light">
                             <h3 class="text-black">
                                 <?php
-                                    echo $product->product_title;
-                                ?>  
-                            </h3>  
+                                echo $product->product_title;
+                                ?>
+                            </h3>
                         </div>
                         <div class="card-img-top">
-                            <img width="" 
-                            src="./public/uploads/<?php echo $product->product_image;?>" alt="" class="img-fluid rounded">
+                            <img width="" src="./public/uploads/<?php echo $product->product_image; ?>" alt="" class="img-fluid rounded">
                         </div>
                         <div class="card-body">
                             <p class="text-black">
                                 <?php
-                                    echo $product->short_desc;
+                                echo $product->short_desc;
                                 ?>
                             </p>
                         </div>
-                        <div class="card-footer">
+                        <!-- <div class="card-footer">
                             <span class="badge badge-danger p-2">
                                 <?php
-                                    echo $product->product_price;
+                                echo $product->product_price;
                                 ?>dh
                             </span>
-                            
-                        </div>
-                    </div> 
+
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <h3 class="text-white m-3 text-center">
-                Qté : 
-                <?php echo $product->product_quantity;?>
-                
+                Qté :
+                <?php echo $product->product_quantity; ?>
+
             </h3>
-            <form method="post" action="<?php echo BASE_URL;?>checkout">
+            <form method="post" action="<?php echo BASE_URL; ?>checkout">
                 <div class="form-group">
                     <input type="number" name="product_qte" id="product_qte" class="text-black" value="1">
-                    <input type="hidden" name="product_title" value="<?php echo $product->product_title;?>">
-                    <input type="hidden" name="product_id" value="<?php echo $product->product_id;?>">
+                    <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
+                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+
+                    <select name="product_price" id="product_price" class="text-white bg-black">
+                        <?php
+                        foreach ($value as $values) {
+
+                            echo '<option value="' . $values->price_value . '">' . $values->price_value . '</option>';
+                        }
+                        ?>
+                    </select>
+
+
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Ajouter au panier">

@@ -39,8 +39,18 @@ class Product
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
             return $product;
-            $stmt->close();
-            $stmt = null;
+        } catch (PDOException $ex) {
+            echo "erreur " . $ex->getMessage();
+        }
+    }
+
+    static public function getValues()
+    {
+        try {
+            $stmt = DB::connect()->prepare("SELECT * FROM prices");
+            $stmt->execute();
+            $value = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $value;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }

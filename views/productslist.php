@@ -29,7 +29,7 @@ if (isset($_POST["cat_id"])) {
 
 </head>
 
-<body>
+<body class="bg-[#f5f5f5]">
     <!-- navbar -->
     <style>
         .mainabout {
@@ -54,8 +54,8 @@ if (isset($_POST["cat_id"])) {
     <!-- end navbar -->
 
 
-    <div class="flex gap-5 justify-center py-16 bg-green-50 flex-wrap ">
-    <a href="<?php echo BASE_URL; ?>productslist" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza"> All</a>
+    <div class="flex gap-5 justify-center py-16 flex-wrap ">
+    <a href="<?php echo BASE_URL; ?>productslist" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza"> All</a>
 
         <?php
         foreach ($categories as $category) :
@@ -64,7 +64,7 @@ if (isset($_POST["cat_id"])) {
                 <form id="catPro" method="post" action="">
                     <input type="hidden" name="cat_id" id="cat_id">
                 </form>
-                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza">
+                <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza">
                     <?php
                     echo $category['cat_title'];
                     ?>
@@ -74,16 +74,16 @@ if (isset($_POST["cat_id"])) {
                     // echo count($productsByCat);
                     ?>
                 </button>
-
+            </li>
             <?php
         endforeach;
             ?>
     </div>
-    <section class="bg-green-50 pb-5 pt-5 ">
+    <section class=" pb-5 pt-5 ">
         <!-- <h1 class="text-5xl font-bold ink-free text-black text-center ">Our Products</h1> -->
         <section class="flex gap-4 md:gap-6 justify-center md:max-w-2xl lg:max-w-7xl mx-auto flex-wrap">
             <?php foreach ($products as $product) : ?>
-                <div class="card p-6 bg-white">
+                <div class="card p-6 bg-white shadow-lg mb-20">
                     <div>
                         <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>
@@ -100,8 +100,8 @@ if (isset($_POST["cat_id"])) {
                             <input type="hidden" name="product_id" id="product_id">
                         </form>
 
-                        <a onclick="submitForm(<?php echo $product["product_id"]; ?>)" class="bg-red-600 hover:bg-red-900 text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza">SEE MORE</a>
-                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist"></a>
+                        <a onclick="submitForm(<?php echo $product["product_id"]; ?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
+                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></a>
                     </div>
                 </div>
 

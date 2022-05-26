@@ -41,12 +41,15 @@
         <!-- part1  -->
         <div class="hero min-h-screen">
             <!-- <div class="hero-overlay"></div> -->
-            <div class="hero-content text-white text-center text-neutral-content">
+            <div class="hero-content text-white text-center">
                 <div class="max-w-md text-left ">
                     <h1 class="text-5xl font-bold ink-free">Egifter</h1>
-                    <p class="font-proza text-2xl m-7">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
+                    <p class="font-proza text-2xl m-7 ">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
                     <!-- <a href="<?php echo BASE_URL ?>products" class="btn btn-primary btn-lg">Shop Now</a> -->
-                    <a href="<?php echo BASE_URL; ?>productslist" class="bg-red-600 pt-2 pb-2 pr-10 pl-10 h-10 text-center hover:bg-red-900 rounded-full font-proza font-bold">SEE MORE</a>
+                    <div class="duration-500 ease-in-out hover:rotate-6 hover:scale-90">
+
+                        <a href="<?php echo BASE_URL; ?>productslist" class="bg-red-600 py-2 px-10 h-10 text-center rounded-full font-proza font-bold">SEE MORE</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,10 +76,10 @@
 
     <section class="bg-green-50 pb-5 pt-5 ">
         <h1 class="text-5xl font-bold ink-free text-black text-center ">Our Products</h1>
-        <section class="flex gap-14 justify-center mt-20 cards flex-wrap">
+        <section class="flex gap-14 justify-center mt-20 mb-20 cards flex-wrap">
             <?php foreach ($products as $product) {  ?>
                 <!-- loop through the products -->
-                <div class="card p-6 bg-white" style="width: 18rem">
+                <div class="card p-6 bg-white shadow-lg" style="width: 18rem">
                     <div>
                         <img src="./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>
@@ -85,9 +88,9 @@
                         <p class="text-black font-proza">Starting at <?= $product['product_price'] ?>$</p>
                     </div>
                     <div class="flex gap-2 justify-center">
-                        <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a>
-                        <a href="<?php echo BASE_URL; ?>show" class="bg-red-600 hover:bg-red-900 text-white rounded-full w-2/3 text-center h-10 pt-2 font-bold font-proza">SEE MORE</a>
-                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist"></a>
+                        <!-- <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a> -->
+                        <a href="<?php echo BASE_URL; ?>show" class="bg-red-600 text-white rounded-full w-2/3 text-center h-10 pt-2 font-bold font-proza duration-500 ease-in-out hover:scale-95">SEE MORE</a>
+                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></a>
                     </div>
                 </div>
 
