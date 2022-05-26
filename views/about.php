@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="http://fonts.cdnfonts.com/css/proza-libre" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
@@ -61,8 +60,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- footer -->
     <footer>

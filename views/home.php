@@ -44,7 +44,7 @@
             <div class="hero-content text-white text-center">
                 <div class="max-w-md text-left ">
                     <h1 class="text-5xl font-bold ink-free">Egifter</h1>
-                    <p class="font-proza text-2xl m-7 ">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
+                    <p class="font-proza text-2xl m-7  ">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
                     <!-- <a href="<?php echo BASE_URL ?>products" class="btn btn-primary btn-lg">Shop Now</a> -->
                     <div class="duration-500 ease-in-out hover:rotate-6 hover:scale-90">
 
@@ -79,7 +79,7 @@
         <section class="flex gap-14 justify-center mt-20 mb-20 cards flex-wrap">
             <?php foreach ($products as $product) {  ?>
                 <!-- loop through the products -->
-                <div class="card p-6 bg-white shadow-lg hover:shadow-black duration-500git" style="width: 18rem">
+                <div class="card p-6 bg-white shadow-lg hover:shadow-black duration-500" style="width: 18rem">
                     <div>
                         <img src="./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>

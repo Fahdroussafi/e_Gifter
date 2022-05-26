@@ -1,10 +1,10 @@
 <div class="bg-black ">
-        <div class="container px-6 py-4 mx-auto ">
+        <div class="container px-6 py-20 mx-auto font-proza ">
             <div class=" lg:flex">
                 <div class=" w-full -mx-6 justify-evenly lg:w-2/5">
                     <div class="px-6">
                         <div>
-                            <a href="#" class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Egifter</a>
+                            <a href="#" class="text-2xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Egifter</a>
                         </div>
                         
                         <p class="max-w-md mt-2 dark:text-gray-400">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
@@ -36,7 +36,7 @@
                         <div>
                             <h3 class="text-gray-700 uppercase dark:text-white">About</h3>
                             <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Company</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">community</a>
+                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Community</a>
                             <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</a>
                         </div>
 
@@ -56,8 +56,8 @@
 
                         <div>
                             <h3 class="text-gray-700 uppercase dark:text-white">Contact</h3>
-                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+1 526 654 8965</span>
-                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">example@email.com</span>
+                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+212 697352024</span>
+                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">roussafifahd@gmail.com</span>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             <hr class="h-px my-6 border-none bg-sky-700">
 
             <div>
-                <p class="text-center dark:text-white">© Brand 2020 - All rights reserved</p>
+                <p class="text-center dark:text-white">© eGifter 2022 - All rights reserved</p>
             </div>
         </div>
 </div>

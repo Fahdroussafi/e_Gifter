@@ -106,8 +106,8 @@
     paypal.Buttons({
   style: {
     layout: 'vertical',
-    color:  'blue',
-    shape:  'rect',
+    color:  'gold',
+    shape:  'pill',
     label:  'paypal'
   }
 }).render('#paypal-button-container');
