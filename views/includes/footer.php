@@ -1,72 +1,18 @@
-<div class="bg-black ">
-        <div class="container px-6 py-20 mx-auto font-proza ">
-            <div class=" lg:flex">
-                <div class=" w-full -mx-6 justify-evenly lg:w-2/5">
-                    <div class="px-6">
-                        <div>
-                            <a href="#" class="text-2xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Egifter</a>
-                        </div>
-                        
-                        <p class="max-w-md mt-2 dark:text-gray-400">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
-                        
-                        <div class="flex mt-4 -mx-2">
-                            <a href="#" class="mx-2 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Linkden">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                                    <path d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"/>
-                                </svg>
-                            </a>
-
-                            <a href="#" class="mx-2 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Facebook">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                                    <path d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"/>
-                                </svg>
-                            </a>
-
-                            <a href="#" class="mx-2 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Twitter">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                                    <path d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-6 lg:mt-0 lg:flex-1">
-                    <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
-                        <div>
-                            <h3 class="text-gray-700 uppercase dark:text-white">About</h3>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Company</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Community</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</a>
-                        </div>
-
-                        <div>
-                            <h3 class="text-gray-700 uppercase dark:text-white">More Products</h3>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Tec</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Music</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Videos</a>
-                        </div>
-
-                        <div>
-                            <h3 class="text-gray-700 uppercase dark:text-white">Products</h3>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Mega cloud</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Aperion UI</a>
-                            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Meraki UI</a>
-                        </div>
-
-                        <div>
-                            <h3 class="text-gray-700 uppercase dark:text-white">Contact</h3>
-                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+212 697352024</span>
-                            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">roussafifahd@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="h-px my-6 border-none bg-sky-700">
-
-            <div>
-                <p class="text-center dark:text-white">© eGifter 2022 - All rights reserved</p>
-            </div>
-        </div>
-</div>
+<footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+  <div class="grid grid-flow-col gap-4">
+    <a class="link link-hover">About us</a> 
+    <a class="link link-hover">Contact</a> 
+    <a class="link link-hover">Jobs</a> 
+    <a class="link link-hover">Press kit</a>
+  </div> 
+  <div>
+    <div class="grid grid-flow-col gap-4">
+      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a> 
+      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a> 
+      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+    </div>
+  </div> 
+  <div>
+    <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+  </div>
+</footer>

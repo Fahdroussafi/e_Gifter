@@ -14,19 +14,20 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="./views/src/output.css" rel="stylesheet">
 
+
 </head>
 
-<?php
-    {
-        $data = new ProductsController();
-        $products = $data->getRandomProducts();
-    }
+<?php {
+    $data = new ProductsController();
+    $products = $data->getRandomProducts();
+}
 ?>
+
 <body>
     <!-- navbar -->
     <style>
         li {
-            font-weight: bold; 
+            font-weight: bold;
         }
     </style>
     <section class="main">
@@ -66,7 +67,7 @@
                 <p class="mt-6 text-2xl text-black font-proza">The best part about our digital gift cards is that they never expire. Once you give them
                     as a gift, you can use them any time. All of your purchases are protected by our 90 day return
                     policy and One-Year Hassle -Free Warranty. </p>
-                    <p class="mt-4 text-2xl text-black font-proza">Get an eGift Card for a special occasion, quick shopping
+                <p class="mt-4 text-2xl text-black font-proza">Get an eGift Card for a special occasion, quick shopping
                     spoils, or just to show a friend how much you care..</p>
             </div>
         </div>
@@ -79,7 +80,7 @@
         <section class="flex gap-14 justify-center mt-20 mb-20 cards flex-wrap">
             <?php foreach ($products as $product) {  ?>
                 <!-- loop through the products -->
-                <div class="card p-6 bg-white shadow-lg hover:shadow-black duration-500" style="width: 18rem">
+                <div class="card p-6 bg-white shadow-lg hover:shadow-2xl duration-500" style="width: 18rem">
                     <div>
                         <img src="./public/uploads/<?= $product['product_image'] ?>" alt="image">
                     </div>
@@ -101,14 +102,17 @@
 
     <!--  end Part 2 -->
 
-    <!-- footer -->
-    <footer>
-        <?php
-        include './views/includes/footer.php';
-        ?>
-    </footer>
-    <!-- end footer -->
 
 </body>
 
+<!-- footer -->
+<div>
+    <?php
+    include './views/includes/footer.php';
+    ?>
+</div>
+<!-- end footer -->
+
 </html>
+
+<script src="/public/js/main.js"></script>

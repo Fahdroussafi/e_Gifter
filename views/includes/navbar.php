@@ -8,16 +8,16 @@
             <div class="flex-wrap"><img src="<?php echo BASE_URL; ?>./public/img/logo.png" alt="logo"></div>
 
             <ul class="w-8/12 flex font-sans  text-xl items-center text-white justify-center space-x-8 flex-wrap">
-                <li><a class="hover:text-[#ff5252] " href="<?php echo BASE_URL; ?>">Home</a>
+                <li><a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>">Home</a>
                 </li>
                 <li>
-                    <a class="hover:text-[#fd5f5f]" href="<?php echo BASE_URL; ?>about">About</a>
+                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>about">About</a>
                 </li>
                 <li>
-                    <a class="hover:text-[#fd5f5f] " href="<?php echo BASE_URL; ?>productslist">Products</a>
+                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>productslist">Products</a>
                 </li>
                 <li>
-                    <a class="hover:text-[#ff5252]" href="<?php echo BASE_URL; ?>contact">Contact</a>
+                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>contact">Contact</a>
                 </li>
             </ul>
 
@@ -33,7 +33,7 @@
                 </button>
                     <?php }
                 else : { ?>
-                        <span class="text-white ">
+                        <span class="text-white">
 
                         </span>
                         <div class="dropdown dropdown-end">
@@ -49,9 +49,9 @@
                                         My Profile
                                     </a>
                                 </li>
-                                <li class="text-white hover:text-red-800 "><a href="<?php echo BASE_URL; ?>orders">My Orders</a></li>
-                                <li class="text-white hover:text-red-800 "><a href="<?php echo BASE_URL; ?>likes">Wishlist</a></li>
-                                <li class="text-white hover:text-red-800"><a href="<?php echo BASE_URL; ?>logout">Log out</a></li>
+                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>orders">My Orders</a></li>
+                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>likes">Wishlist</a></li>
+                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>logout">Log out</a></li>
                             </ul>
                         </div>
 

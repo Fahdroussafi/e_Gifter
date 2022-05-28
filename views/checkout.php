@@ -6,6 +6,7 @@ if (isset($_POST["product_id"])) {
     $product = $data->getProduct();
     $price = $data->getValue();
 
+
     if ($_SESSION["products_" . $id]["title"] == $_POST["product_title"]) {
         Session::set("info", "Vous avez déja ajouté ce produit au panier");
         Redirect::to("cart");
@@ -22,6 +23,8 @@ if (isset($_POST["product_id"])) {
                 "total" => $_POST["product_price"] * $_POST["product_qte"],
             );
             $_SESSION["totaux"] += $_SESSION["products_" . $product->product_id]["total"];
+            // show number of products in cart
+            // $_SESSION["count"] = count($_SESSION);
             $_SESSION["count"] += 1;
             Redirect::to("cart");
         }
@@ -29,3 +32,4 @@ if (isset($_POST["product_id"])) {
 } else {
     Redirect::to("cart");
 }
+

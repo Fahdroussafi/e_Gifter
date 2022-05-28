@@ -39,6 +39,8 @@ class Product
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
             return $product;
+            $stmt->close();
+            $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }
@@ -51,6 +53,8 @@ class Product
             $stmt->execute();
             $value = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $value;
+            $stmt->close();
+            $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }

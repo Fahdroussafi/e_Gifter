@@ -39,6 +39,7 @@ class ProductsController
             return $value;
         }
     }
+
     public function emptyCart($id, $price)
     {
         unset($_SESSION["products_" . $id]);
