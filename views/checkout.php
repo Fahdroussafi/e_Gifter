@@ -5,6 +5,8 @@ if (isset($_POST["product_id"])) {
     $data = new ProductsController();
     $product = $data->getProduct();
     $price = $data->getValue();
+    // decrement product quantity
+    $data->decreaseProductquantity();
 
 
     if ($_SESSION["products_" . $id]["title"] == $_POST["product_title"]) {

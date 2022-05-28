@@ -40,6 +40,17 @@ class ProductsController
         }
     }
 
+ public function decreaseProductquantity () {
+        if (isset($_POST["product_id"])) {
+            $data = array(
+                'id' => $_POST["product_id"],
+                'qte' => $_POST["product_qte"]
+            );
+            $product = Order::decrementProduct($data);
+            return $product;
+        }
+ 
+    }
     public function emptyCart($id, $price)
     {
         unset($_SESSION["products_" . $id]);
@@ -47,6 +58,7 @@ class ProductsController
         $_SESSION["totaux"] -= $price;
         Redirect::to("cart");
     }
+
     public function newProduct()
     {
         if (isset($_POST["submit"])) {

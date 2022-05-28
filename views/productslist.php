@@ -6,8 +6,11 @@ if (isset($_POST["cat_id"])) {
     $products = $products->getProductsByCategory($_POST['cat_id']);
 } else {
     $data = new ProductsController();
-    $products = $data->getAllProducts();
+    $products = $data->getAllProducts(); // get all products from database and store in $products array variable
 }
+// if (isset($_POST["add"])) {
+//   var_dump($_POST["product_id"]);
+// }
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +48,10 @@ if (isset($_POST["cat_id"])) {
         .ink {
             font-family: ink free;
         }
+
+        /* .button {
+            background-color: red;
+        } */
     </style>
     <section class="mainabout">
         <header>
@@ -105,7 +112,7 @@ if (isset($_POST["cat_id"])) {
 
                         <!-- <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a> -->
 
-                        <form id="form" method="post" action="<?php echo BASE_URL ?>show">
+                      <form id="form" method="post" action="<?php echo BASE_URL ?>show">
                             <input type="hidden" name="product_id" id="product_id">
                         </form>
 

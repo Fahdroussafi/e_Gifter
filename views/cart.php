@@ -24,7 +24,9 @@
 // var_dump($_SESSION);
 // echo'</pre>';
 ?>
-
+  <?php
+            include('./views/includes/alerts.php')
+?>
 <body>
     <a href="<?php echo BASE_URL ?>productslist">Back</a>
 
