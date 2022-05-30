@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
 
 <div class='w-full'>
     <nav class="relative px-6">
@@ -30,7 +28,7 @@
                                     <img src="./public/img/user.png">
                                 </a>
                             </div>
-                </button>
+                        </button>
                     <?php }
                 else : { ?>
                         <span class="text-white">
@@ -49,7 +47,7 @@
                                         My Profile
                                     </a>
                                 </li>
-                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>orders">My Orders</a></li>
+                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>userorders">My Orders</a></li>
                                 <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>likes">Wishlist</a></li>
                                 <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>logout">Log out</a></li>
                             </ul>
@@ -65,23 +63,19 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="max-h-36 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
-                                <!-- <span class="badge badge-sm indicator-item">8</span> -->
                             </div>
                         </button>
 
                         <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                             <div class="card-body">
-                                <span class="font-bold text-lg text-white">8 Items</span>
-                                <span class="text-info">Subtotal: $999</span>
                                 <div class="card-actions">
-                                    <a class="btn btn-block " href="<?php echo BASE_URL; ?>cart">View cart</a>
+                                    <a class="btn btn-block" href="<?php echo BASE_URL; ?>cart">View cart</a>
                                 </div>
                             </div>
                         </div>
                     </div>
             </ul>
     </nav>
-</div>
 </div>
 
 

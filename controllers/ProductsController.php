@@ -27,6 +27,7 @@ class ProductsController
         if (isset($_POST["product_id"])) {
             $data = array(
                 'id' => $_POST["product_id"]
+
             );
             $product = Product::getProductById($data);
             return $product;
@@ -34,23 +35,26 @@ class ProductsController
     }
 
     public function getValue()
-    { {
-            $value = Product::getValues();
+    {
+        if ($_POST["product_id"]) {
+            $value = Product::getValues($_POST["product_id"]);
             return $value;
         }
     }
 
- public function decreaseProductquantity () {
-        if (isset($_POST["product_id"])) {
-            $data = array(
-                'id' => $_POST["product_id"],
-                'qte' => $_POST["product_qte"]
-            );
-            $product = Order::decrementProduct($data);
-            return $product;
-        }
- 
-    }
+    //  public function decreaseProductquantity () {
+    //         if (isset($_POST["product_id"])) {
+    //             $data = array(
+    //                 'id' => $_POST["product_id"],
+    //                 'qte' => $_POST["product_qte"]
+    //             );
+    //             $product = Order::decrementProduct($data);
+    //             return $product;
+    //         }
+
+    //     }
+
+
     public function emptyCart($id, $price)
     {
         unset($_SESSION["products_" . $id]);

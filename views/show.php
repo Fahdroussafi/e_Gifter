@@ -81,23 +81,23 @@ $value = $data->getValue();
                             </div>
                             <div class="inline-block align-bottom">
 
-                           
-                            <form method="post" action="<?php echo BASE_URL; ?>checkout">
+
+                                <form method="post" action="<?php echo BASE_URL; ?>checkout">
                                     <div class="form-group">
                                         <input type="number" name="product_qte" id="product_qte" class="text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-white" value="1">
                                         <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
-                                        <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW</button>
+                                        <input type="hidden" name="selectedPrice" id="price" value="">
+                                        <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> ADD TO CART</button>
                                     </div>
 
-                                    <select name="product_price" id="product_price" class="text-black border-2 border-emerald-600 ">
+                                    <select name="price_id" id="product_price" class="text-black border-2 border-emerald-600" required>
+                                        <option class="text-black" value="">Choose price</option>'
                                         <?php
                                         foreach ($value as $values) {
-
-                                            echo '<option class="text-black" value="' . $values->price_value . '">' . $values->price_value . ' </option>' ;
+                                            echo '<option class="text-black" value="' . $values->price_id . '">' . $values->price . ' </option>';
                                         }
                                         ?>
-                                        
                                     </select>
                                 </form>
                             </div>
@@ -113,5 +113,32 @@ $value = $data->getValue();
             ?>
         </div>
         <!-- end footer -->
-        </section>
+    </section>
+
+    <script>
+        const product_qte = document.getElementById('product_qte');
+        const product_price = document.getElementById('product_price');
+        const prices = <?php echo json_encode($value); ?>;
+
+        const price = document.getElementById('price');
+
+        product_qte.addEventListener('change', checkQte);
+        product_price.addEventListener('change', (e) => {
+            checkQte();
+            let priceValue = prices.find(price => price.price_id == e.target.value).price;
+            price.value = priceValue;
+        });
+
+
+        function checkQte() {
+            const selectedPrice = prices.find(price => price.price_id == product_price.value);
+            if (parseInt(selectedPrice.quantity) < parseInt(product_qte.value)) {
+                alert('Sorry, we only have ' + selectedPrice.quantity + ' left in stock');
+                product_qte.value = selectedPrice.quantity;
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>

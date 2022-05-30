@@ -13,7 +13,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" /> -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
-    <script src="https://www.paypal.com/sdk/js?client-id=AQv4lsU6qXNa1XCpCZRtvK6aIPTBC-YPx59giDKGlXWvKDPZRze6oNcrrdXIIFbO7ayGMh_W9MzuSalJ&components=buttons"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AZw6O6tc7UhTWz2cNKSSzG_-ASZlWVO30PNwPFZpxiPKJyOfFuA5ugiPLfzwSpjS0wiCPv5kDW35__Yu&components=buttons"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- <link href="./views/src/output.css" rel="stylesheet"> -->
@@ -22,16 +22,17 @@
 <?php
 // echo '<pre>';
 // var_dump($_SESSION);
-// echo'</pre>';
+// echo '</pre>';
+// die;
 ?>
-  <?php
-            include('./views/includes/alerts.php')
+<?php
+include('./views/includes/alerts.php')
 ?>
+
 <body>
     <a href="<?php echo BASE_URL ?>productslist">Back</a>
 
     <div class="container">
-
         <div class="row">
             <div class="col-md-8 bg-white">
                 <table class="table table-stripped">
@@ -51,7 +52,7 @@
                         <?php if (substr($name, 0, 9) == "products_") : ?>
                             <tr>
                                 <td><?php echo $product["title"]; ?></td>
-                                <td><?php echo $product["price"]; ?></td>
+                                <td><?php echo $product["selectedPrice"]; ?></td>
                                 <td><?php echo $product["qte"]; ?></td>
                                 <td><?php echo $product["total"]; ?> $</td>
                                 <td>
@@ -85,7 +86,6 @@
                                 <?php else : ?>
                                     0
                                 <?php endif; ?>
-                              
                             </td>
                         </tr>
                         <tr>
@@ -104,7 +104,9 @@
                             Vider le panier
                         </button>
                     </form>
-                    <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder"></form>
+                    <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
+                        <button class="p-2 bg-blue-600 text-black" type="submit">Buy</button>
+                    </form>
                 <?php endif; ?>
             </div>
         </div>

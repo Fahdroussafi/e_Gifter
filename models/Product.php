@@ -4,7 +4,7 @@ class Product
 {
     static public function getAll()
     {
-        $stmt = DB::connect()->prepare('SELECT * FROM products where product_quantity > 0');
+        $stmt = DB::connect()->prepare('SELECT * FROM products');
         $stmt->execute();
         return $stmt->fetchAll(); // returns an array of arrays
         $stmt->close(); // close the statement
@@ -12,7 +12,7 @@ class Product
     }
     static public function getRandom($count)
     {
-        $stmt = DB::connect()->prepare("SELECT * FROM products WHERE product_quantity > 0 order by rand() limit " . $count);
+        $stmt = DB::connect()->prepare("SELECT * FROM products order by rand() limit " . $count);
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();
@@ -46,10 +46,11 @@ class Product
         }
     }
 
-    static public function getValues()
+    static public function getValues($id)
     {
         try {
-            $stmt = DB::connect()->prepare("SELECT * FROM prices");
+            $stmt = DB::connect()->prepare("SELECT * FROM prices where product_id = :id");
+            $stmt->execute(array(":id" => $id));
             $stmt->execute();
             $value = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $value;
