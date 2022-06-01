@@ -5,6 +5,7 @@ class ProductsController
     public function getAllProducts()
     {
         $products = Product::getAll();
+        $products = Product::getAllwithlikes();
         return $products;
     }
     public function getRandomProducts()
@@ -41,19 +42,6 @@ class ProductsController
             return $value;
         }
     }
-
-    //  public function decreaseProductquantity () {
-    //         if (isset($_POST["product_id"])) {
-    //             $data = array(
-    //                 'id' => $_POST["product_id"],
-    //                 'qte' => $_POST["product_qte"]
-    //             );
-    //             $product = Order::decrementProduct($data);
-    //             return $product;
-    //         }
-
-    //     }
-
 
     public function emptyCart($id, $price)
     {

@@ -19,37 +19,28 @@ function deleteForm($id) {
   form.submit();
 }
 
-// ajouter un produit au favori :
-function likeProduct(id){
-	$.ajax({ // requete ajax
-		url: "http://localhost/eGifter/user/like/"+id,
-	  }) 
-	.done(function( data ) {
-		var res=JSON.parse(data);
-		if(res.status=="OK"){
-			var d="#like-"+id;
-			$(d).html('<a href="javascript:unlikeProduct('+id+')" class="btn heart"><i class="fas fa-heart-broken"></i></a>') // changement du bouton
-		} // end if
-		else{
-			alert(res.message);
-		}
-	});
+function likeProduct(id) {
+  console.log(id);
+  $.post("http://localhost/egifter/like", {
+    id: id,
+  });
+  d = "#like-" + id;
+  $(d).html(
+    '<a href="javascript:unlikeProduct(' +
+      id +
+      ')" class="btn btn-danger "><i class="fas fa-heart-broken"></i></a>'
+  );
 }
 
-
-// retirer un produit au favori  :
-function unlikeProduct(id){
-	$.ajax({
-		url: "http://localhost/eGifter/user/unlike/"+id,
-	  })
-	.done(function( data ) {
-		var res=JSON.parse(data);
-		if(res.status=="OK"){
-			d="#like-"+id;
-			$(d).html('<a href="javascript:likeProduct('+id+')" class="btn heart"><i class="fas fa-heart"></i></a>')
-		}
-		else{
-			alert(res.message);
-		}
-	});
+function unlikeProduct(id) {
+  console.log(id);
+  $.post("http://localhost/egifter/unlike", {
+    id: id,
+  });
+  d = "#like-" + id;
+  $(d).html(
+    '<a href="javascript:likeProduct(' +
+      id +
+      ')" class="btn btn-danger "><i class="fas fa-heart"></i></a>'
+  );
 }

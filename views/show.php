@@ -5,11 +5,23 @@ $product = $data->getProduct();
 // echo '<pre>';
 // var_dump($product);
 // echo '</pre>';
+// die;
 $value = $data->getValue();
 // echo '<pre>';
-// print_r($value);
+// print_r($_POST);
+$id=$_POST['product_id'];
 // echo '</pre>';
 // die;
+// add to wishlist
+
+if(isset($_POST["submit"]))
+{
+    $data = new UsersController();
+    $product = $data->like();
+    // alert message
+    // echo '<script>alert("Produit ajouté à la wishlist")</script>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +37,17 @@ $value = $data->getValue();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link href="./views/src/output.css" rel="stylesheet">
+    <script src="./public/js/main.js"></script>
+    <script src="./public/js/jquery.min.js"></script>
 
 </head>
+<?php
+    include('./views/includes/alerts.php')
+?>
 
 <body>
     <style>
@@ -89,7 +107,9 @@ $value = $data->getValue();
                                         <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                         <input type="hidden" name="selectedPrice" id="price" value="">
                                         <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> ADD TO CART</button>
+
                                     </div>
+
 
                                     <select name="price_id" id="product_price" class="text-black border-2 border-emerald-600" required>
                                         <option class="text-black" value="">Choose price</option>'
@@ -100,6 +120,10 @@ $value = $data->getValue();
                                         ?>
                                     </select>
                                 </form>
+                                <form method="post" action="">
+                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>" >
+                                    <button name="submit" class="btn heart"><i class="fas fa-heart"></i></button>
+                                </form> 
                             </div>
                         </div>
                     </div>

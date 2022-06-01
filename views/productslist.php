@@ -7,20 +7,8 @@ if (isset($_POST["cat_id"])) {
 } else {
     $data = new ProductsController();
     $products = $data->getAllProducts(); // get all products from database and store in $products array variable
-} 
-// add to wishlist
-if (isset($_POST["product_id"])) {
-    $data = array(
-        "user_id" => $_SESSION["user_id"],
-        "product_id" => $_POST["product_id"],
-    );
-    $result = Wishlist::like($data);
-    if ($result === "ok") {
-        echo "ok";
-    } else {
-        echo $result;
-    }
 }
+
 // if (isset($_POST["add"])) {
 //   var_dump($_POST["product_id"]);
 // }
@@ -42,8 +30,14 @@ if (isset($_POST["product_id"])) {
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="./views/src/output.css" rel="stylesheet">
     <script src="./public/js/main.js"></script>
+    <script src="./public/js/jquery.min.js"></script>
+
+   
 
 </head>
+<?php
+    include('./views/includes/alerts.php')
+?>
 
 <body class="bg-[#f5f5f5]">
     <!-- navbar -->
@@ -92,9 +86,10 @@ if (isset($_POST["product_id"])) {
         foreach ($categories as $category) :
         ?>
             <li class="list-none">
-                <form id="catPro" method="post" action="<?php echo BASE_URL ?>/productslist">
+                <form id="catPro" method="post" action="<?php echo BASE_URL ?>productslist">
                     <input type="hidden" name="cat_id" id="cat_id">
                 </form>
+                
                 <button onclick="getCatProducts(<?php echo $category['cat_id']; ?>)" class="py-2 px-4 shadow-md proza rounded-full bg-white text-black text-2xl border-red hover:text-white hover:bg-red-700 focus:outline-none active:shadow-none cursor-pointer active:bg-red-700 font-proza duration-500">
                     <?php
                     echo $category['cat_title'];
@@ -131,12 +126,19 @@ if (isset($_POST["product_id"])) {
 
                         <a onclick="submitForm(<?php echo $product['product_id']; ?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
 
-                        <form  method="post" action="<?php echo BASE_URL ?>productslist">
+                        <!-- <div id="like-<?= $product['product_id'] ?>" style="display: inline;">
 
-                         <input value="<?php echo $product['product_id'] ?>" type="hidden" name="product_id" id="product_id">
-                        
-                        <button type="submit"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></button>
-                        </form>
+                            <?php if ($product['liked'] == TRUE) { ?>
+                                <a href="javascript:unlikeProduct(<?= $product['product_id'] ?>)" class="btn heart"><i class='fas fa-heart-broken'></i></a><?php } 
+                                else { ?> <a href="javascript:likeProduct(<?= $product['product_id'] ?>)" class="btn heart"><i class="fas fa-heart"></i></a><?php } ?>
+                        </div>
+                         -->
+                        <!-- <form method="post" action="<?php echo BASE_URL ?>productslist">
+
+                            <input value="<?php echo $product['product_id'] ?>" type="hidden" name="product_id" id="product_id">
+
+                            <button type="submit"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></button>
+                        </form> -->
 
                     </div>
                 </div>

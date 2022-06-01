@@ -43,21 +43,45 @@ class UsersController
             echo $result;
         }
     }
-    public function like(){
-        $data = array(
-            "user_id" => $_SESSION["user_id"],
-            "product_id" => $_POST["product_id"],
-        );
-        $result = Wishlist::like($data);
-        if ($result === "ok") {
-            echo "ok";
-        } else {
-            echo $result;
+    public function like()
+    {
+        // print_r($_POST);
+        // die;
+        
+        if (isset($_POST["submit"])) {
+            $data = array(
+                "user_id" => $_SESSION["user_id"],
+                "product_id" => $_POST["product_id"]
+            );
+            $result = Wishlist::add($data);
+            if ($result === "ok") {
+                Session::set("success", "Produit ajouté à la wishlist");
+                Redirect::to("productslist");
+            } else {
+                Session::set("error", "Produit deja ajouté à la wishlist");
+                Redirect::to("likes");
+            }
+        }
+    }
+        public function unlike($product_id)
+        {
+            if (isset($_POST["submit"])) {
+                $data = array(
+                    "user_id" => $_SESSION["user_id"],
+                    "product_id" => $product_id,
+                );
+                $result = Wishlist::add($data);
+                if ($result === "ok") {
+                    Redirect::to("home");
+                } else {
+                    echo $result;
+             }  
         }
     }
 
     public function logout()
     {
         session_destroy();
+        // session_unset();
     }
 }

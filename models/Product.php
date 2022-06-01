@@ -4,10 +4,18 @@ class Product
 {
     static public function getAll()
     {
-        $stmt = DB::connect()->prepare('SELECT * FROM products');
+        $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products');
         $stmt->execute();
         return $stmt->fetchAll(); // returns an array of arrays
-        $stmt->close(); // close the statement
+        // $stmt->close(); // close the statement
+        $stmt = null; // close connection
+    }
+    static public function getAllwithlikes()
+    {
+        $stmt = DB::connect()->prepare('SELECT products.*,(SELECT COUNT(*) FROM wishlist WHERE product_id = products.product_id) as liked from products');
+        $stmt->execute();
+        return $stmt->fetchAll(); // returns an array of arrays
+        // $stmt->close(); // close the statement
         $stmt = null; // close connection
     }
     static public function getRandom($count)
@@ -15,17 +23,18 @@ class Product
         $stmt = DB::connect()->prepare("SELECT * FROM products order by rand() limit " . $count);
         $stmt->execute();
         return $stmt->fetchAll();
-        $stmt->close();
+        // $stmt->close();
         $stmt = null;
     }
     static public function getProductByCat($data)
     {
         $id = $data['id'];
         try {
-            $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
+            // $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
+            $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_category_id = :id');
             $stmt->execute(array(":id" => $id));
             return $stmt->fetchAll();
-            $stmt->close();
+            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
@@ -35,11 +44,12 @@ class Product
     {
         $id = $data['id'];
         try {
-            $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
+             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
+            // $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_id = :id');
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
             return $product;
-            $stmt->close();
+            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
@@ -54,7 +64,7 @@ class Product
             $stmt->execute();
             $value = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $value;
-            $stmt->close();
+            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
@@ -80,7 +90,7 @@ class Product
         } else {
             return 'error';
         }
-        $stmt->close();
+        // $stmt->close();
         $stmt = null;
     }
 
@@ -109,7 +119,7 @@ class Product
         } else {
             return 'error';
         }
-        $stmt->close();
+        // $stmt->close();
         $stmt = null;
     }
 
@@ -124,7 +134,7 @@ class Product
             }else{
                 return 'error';
             }
-            $stmt->close();
+            // $stmt->close();
             $stmt =null;
         }catch(PDOException $ex){
             echo "erreur " .$ex->getMessage();

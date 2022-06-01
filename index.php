@@ -7,7 +7,8 @@ $home = new HomeController();
 $pages = [
         'home','cart','dashboard','updateProduct','deleteProduct',
         'addProduct','emptycart','show','cancelcart','register',
-        'login','checkout','logout','productslist','orders','addOrder','about','contact','userorders','products'
+        'login','checkout','logout','productslist','orders','addOrder','about','contact','userorders','products','like','unlike','wishlist',
+        'likes'
     ];
 
 if(isset($_GET['page'])){
