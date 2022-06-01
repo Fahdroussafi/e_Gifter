@@ -100,7 +100,7 @@
                             <input type="hidden" name="product_id" id="product_id">
                         </form>
 
-                        <a onclick="submitForm(<?php echo $product["product_id"]; ?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
+                        <a onclick="submitForm(<?php echo $product['product_id'];?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
 
                         <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></a>
                     </div>

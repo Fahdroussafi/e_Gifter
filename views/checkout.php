@@ -37,9 +37,10 @@ if (isset($_POST["product_id"])) {
             // show number of products in cart
             // $_SESSION["count"] = count($_SESSION);
             $_SESSION["count"] += 1;
-            Redirect::to("cart");
+            Redirect::to("cart");        
         }
     }
-} else {
+} 
+else {
     Redirect::to("cart");
 }

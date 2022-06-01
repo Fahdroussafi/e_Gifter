@@ -7,6 +7,19 @@ if (isset($_POST["cat_id"])) {
 } else {
     $data = new ProductsController();
     $products = $data->getAllProducts(); // get all products from database and store in $products array variable
+} 
+// add to wishlist
+if (isset($_POST["product_id"])) {
+    $data = array(
+        "user_id" => $_SESSION["user_id"],
+        "product_id" => $_POST["product_id"],
+    );
+    $result = Wishlist::like($data);
+    if ($result === "ok") {
+        echo "ok";
+    } else {
+        echo $result;
+    }
 }
 // if (isset($_POST["add"])) {
 //   var_dump($_POST["product_id"]);
@@ -97,7 +110,7 @@ if (isset($_POST["cat_id"])) {
         endforeach;
         ?>
     </div>
-    <section class=" pb-5 pt-5 ">
+    <section class="pb-5 pt-5 ">
         <section class="flex gap-4 md:gap-6 justify-center md:max-w-2xl lg:max-w-7xl mx-auto flex-wrap">
             <?php foreach ($products as $product) : ?>
                 <div class="card p-6 bg-white shadow-lg hover:shadow-2xl duration-500 ease-in-out mb-20">
@@ -112,13 +125,19 @@ if (isset($_POST["cat_id"])) {
 
                         <!-- <a href="#"><img src="./public/img/add to cart.svg" alt="add to cart"></a> -->
 
-                      <form id="form" method="post" action="<?php echo BASE_URL ?>show">
+                        <form id="form" method="post" action="<?php echo BASE_URL ?>show">
                             <input type="hidden" name="product_id" id="product_id">
                         </form>
 
-                        <a onclick="submitForm(<?php echo $product["product_id"];?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
+                        <a onclick="submitForm(<?php echo $product['product_id']; ?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
+
+                        <form  method="post" action="<?php echo BASE_URL ?>productslist">
+
+                         <input value="<?php echo $product['product_id'] ?>" type="hidden" name="product_id" id="product_id">
                         
-                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></a>
+                        <button type="submit"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></button>
+                        </form>
+
                     </div>
                 </div>
 

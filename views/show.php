@@ -116,9 +116,9 @@ $value = $data->getValue();
     </section>
 
     <script>
-        const product_qte = document.getElementById('product_qte');
+        const product_qte = document.getElementById('product_qte'); // get the input
         const product_price = document.getElementById('product_price');
-        const prices = <?php echo json_encode($value); ?>;
+        const prices = <?php echo json_encode($value); ?>; // get the prices
 
         const price = document.getElementById('price');
 

@@ -2,6 +2,12 @@
     if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true){
         Redirect::to("home");
     }
+    // if admin == 1 redirect to dashboard
+    // if(isset($_SESSION["admin"]) && $_SESSION["admin"] === true){
+    //     Redirect::to("dashboard");
+    // }
+    
+  
     $loginUser = new UsersController();
     $loginUser->auth();
 ?>
@@ -26,7 +32,7 @@
     <div class="right">
         <div class="container">
             <h1>Sign into your account</h1>
-            <form  method="post">
+            <form method="post">
                 <div class="input-group">
                     <input type="text" placeholder="Enter your username" name="username">
                 </div>

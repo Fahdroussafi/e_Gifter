@@ -65,14 +65,14 @@ class ProductsController
 
     public function newProduct()
     {
-        if (isset($_POST["submit"])) {
-            $data = array(
+        if (isset($_POST["submit"])) { 
+            $data = array( 
                 "product_title" => $_POST["product_title"],
                 "product_description" => $_POST["product_description"],
                 "product_quantity" => $_POST["product_quantity"],
                 "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto(),
-                "old_price" => $_POST["old_price"],
+                // "old_price" => $_POST["old_price"],
                 "product_price" => $_POST["product_price"],
                 "product_category_id" => $_POST["product_category_id"],
             );
@@ -96,7 +96,7 @@ class ProductsController
                 "product_quantity" => $_POST["product_quantity"],
                 "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto($oldImage),
-                "old_price" => $_POST["old_price"],
+                // "old_price" => $_POST["old_price"],
                 "product_price" => $_POST["product_price"],
                 "product_category_id" => $_POST["product_category_id"],
             );

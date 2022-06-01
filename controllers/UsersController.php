@@ -14,6 +14,9 @@ class UsersController
                 $_SESSION["admin"] = $result->admin;
                 $_SESSION["user_id"] = $result->user_id;
                 Redirect::to("home");
+                // if admin == 1 redirect to dashboard
+            } else if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
+                Redirect::to("dashboard");
             } else {
                 Session::set("error", "Pseudo ou mot de passe est incorrect");
                 Redirect::to("login");
@@ -40,6 +43,19 @@ class UsersController
             echo $result;
         }
     }
+    public function like(){
+        $data = array(
+            "user_id" => $_SESSION["user_id"],
+            "product_id" => $_POST["product_id"],
+        );
+        $result = Wishlist::like($data);
+        if ($result === "ok") {
+            echo "ok";
+        } else {
+            echo $result;
+        }
+    }
+
     public function logout()
     {
         session_destroy();

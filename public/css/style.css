@@ -1,21 +1,22 @@
 * {
-    padding: 0;
-    margin : 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 .main {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url(../img/hero.png);
-    background-position: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 1vw 2vw 0 2vw;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/hero.png);
+  background-position: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1vw 2vw 0 2vw;
 }
 .hero-section {
-    background-color: #F4F5E2;
+  background-color: #f4f5e2;
 }
 
 .ink-free {
-    font-family: 'Ink Free';
-    font-size: 40px;
-    color: #fff;
+  font-family: "Ink Free";
+  font-size: 40px;
+  color: #fff;
 }

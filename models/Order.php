@@ -14,7 +14,7 @@ class Order
     static public function createOrder($data)
     {
 
-        $code = self::selectCodes($data["price_id"]);
+        $code = self::selectCodes($data["price_id"]);   // get the code of the price selected  by the user  (price_id)
 
         $stmt = DB::connect()->prepare('INSERT INTO orders (fullname,product,qte,price,total,code_id,user_id) VALUES (:fullname,:product,:qte,:price,:total,:code,:user_id)');
         $stmt->bindParam(':fullname', $data['fullname']);
