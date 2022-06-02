@@ -91,7 +91,7 @@ include('./views/includes/alerts.php')
                         <tr>
                             <th scope="row">Total TTC</th>
                             <td>
-                                <strong id="amount" data-amount="">
+                                <strong id="amount" data-amount="<?php echo $_SESSION["totaux"];?>">
                                     <?php echo isset($_SESSION["totaux"]) ? $_SESSION["totaux"] : 0; ?> <span class="bb-danger">$</span>
                                 </strong>
                             </td>

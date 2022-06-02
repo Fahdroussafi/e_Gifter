@@ -1,3 +1,11 @@
+<?php 
+    $total = new ProductsController();
+    $total = $total->getTotal();
+    // echo '<pre>';
+    // var_dump($total);
+    // echo '</pre>';
+    // die;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +42,7 @@
                 <div class="card-body">
                     <h3 class="card-text text-center">
                         <a href="<?php echo BASE_URL?>orders" 
-                        style="text-decoration:none;color:white;font-weight:bold">Commandes</a>
+                        style="text-decoration:none;color:white;font-weight:bold"><?php echo $total->total ?>Commandes</a>
                     </h3>
                 </div>
             </div>

@@ -2,14 +2,15 @@
 class Wishlist
 {
 
-    // static public function getAll($user)
-    // {
-    //     $stmt = DB::connect()->prepare('SELECT * FROM wishlist WHERE user_id = :user');
-    //     $stmt->execute(array(":user" => $user));
-    //     return $stmt->fetchAll(); // returns an array of arrays
-    //     // $stmt->close(); // close the statement
-    //     $stmt = null; // close connection
-    // }
+    static public function getAll()
+    {
+        // $stmt = DB::connect()->prepare('SELECT * FROM wishlist WHERE user_id = :id');        
+        $stmt = DB::connect()->prepare('SELECT * FROM wishlist JOIN products on products.product_id = wishlist.product_id WHERE user_id = :id');
+        $stmt->execute(array(":id" => $_SESSION["user_id"]));
+        return $stmt->fetchAll(); // returns an array of arrays
+        // $stmt->close(); // close the statement
+        $stmt = null; // close connection
+    }
 
     static public function add($data)
     {

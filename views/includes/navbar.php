@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+<script src="./public/js/main.js"></script>
+<script src="./public/js/jquery.min.js"></script>
+<div id="preloder">
+        <div class="loader"></div>
+    </div>
 <div class='w-full'>
     <nav class="relative px-6">
         <div class="flex items-center justify-between flex-wrap">

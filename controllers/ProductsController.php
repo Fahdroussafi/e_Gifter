@@ -127,4 +127,8 @@ class ProductsController
             }
         }
     }
+    public function getTotal(){
+        $total = Product::getTotalPrice();
+        return $total;
+    }
 }

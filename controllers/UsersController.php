@@ -78,10 +78,20 @@ class UsersController
              }  
         }
     }
+    public function ShowWishlist()
+    {
+        $wishlist = Wishlist::getAll();
+        return $wishlist;
+    }
 
     public function logout()
     {
+        // keep what the user added in the cart in the session before logout 
+        if (isset($_SESSION["cart"])) {
+            $cart = $_SESSION["cart"];
+            $_SESSION["cart"] = $cart;
+        }
         session_destroy();
-        // session_unset();
+        Redirect::to("login");
     }
 }

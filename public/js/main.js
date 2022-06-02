@@ -19,28 +19,9 @@ function deleteForm($id) {
   form.submit();
 }
 
-function likeProduct(id) {
-  console.log(id);
-  $.post("http://localhost/egifter/like", {
-    id: id,
-  });
-  d = "#like-" + id;
-  $(d).html(
-    '<a href="javascript:unlikeProduct(' +
-      id +
-      ')" class="btn btn-danger "><i class="fas fa-heart-broken"></i></a>'
-  );
-}
-
-function unlikeProduct(id) {
-  console.log(id);
-  $.post("http://localhost/egifter/unlike", {
-    id: id,
-  });
-  d = "#like-" + id;
-  $(d).html(
-    '<a href="javascript:likeProduct(' +
-      id +
-      ')" class="btn btn-danger "><i class="fas fa-heart"></i></a>'
-  );
-}
+(function($) {
+$(window).on('load', function() {
+  $(".loader").fadeOut();
+  $("#preloder").delay(200).fadeOut("slow");
+});
+});
