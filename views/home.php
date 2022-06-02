@@ -45,14 +45,11 @@
 
         <!-- part1  -->
         <div class="hero min-h-screen">
-            <!-- <div class="hero-overlay"></div> -->
             <div class="hero-content text-white text-center">
                 <div class="max-w-md text-left ">
                     <h1 class="text-5xl font-bold ink-free">Egifter</h1>
                     <p class="font-proza text-2xl m-7  ">You've come to the right place for digital gift cards. We are the public's number one choice for digital gift cards, check out our deals and offers online and we'll see you soon!</p>
-                    <!-- <a href="<?php echo BASE_URL ?>products" class="btn btn-primary btn-lg">Shop Now</a> -->
                     <div class="duration-500 ease-in-out hover:rotate-6 hover:scale-90">
-
                         <a href="<?php echo BASE_URL; ?>productslist" class="bg-red-600 py-2 px-10 h-10 text-center rounded-full font-proza font-bold">SEE MORE</a>
                     </div>
                 </div>

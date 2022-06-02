@@ -21,10 +21,10 @@ if (isset($_POST["product_id"])) {
         Session::set("info", "You already added this product to your cart!");
         Redirect::to("cart");
     } else {
-        if ($product->product_quantity < $_POST["product_qte"]) {
-            Session::set("info", "The Available Quantity is : $product->product_quantity");
-            Redirect::to("cart");
-        } else {
+        // if ($product->product_quantity < $_POST["product_qte"]) {
+        //     Session::set("info", "The Available Quantity is : $product->product_quantity");
+        //     Redirect::to("cart");
+        
             $_SESSION["products_" . $product->product_id] = array(
                 "id" => $id,
                 "title" => $title,
@@ -37,10 +37,8 @@ if (isset($_POST["product_id"])) {
             // show number of products in cart
             // $_SESSION["count"] = count($_SESSION);
             $_SESSION["count"] += 1;
-            Redirect::to("cart");        
-        }
+            Redirect::to("cart");
     }
-} 
-else {
+} else {
     Redirect::to("cart");
 }
