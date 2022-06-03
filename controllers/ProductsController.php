@@ -94,7 +94,7 @@ class ProductsController
     public function newCode(){
         if (isset($_POST["submit"])) { 
             $data = array( 
-                "product_id" => $_POST["product_id"],
+                "price_id" => $_POST["price_id"],
                 "code" => $_POST["code"],
             );
             $result = Product::addCode($data);

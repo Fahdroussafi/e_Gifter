@@ -7,9 +7,10 @@
       $code->newCode();
   }
 
-// echo '<pre>';
-// print_r($prices);
-// echo '</pre>';
+echo '<pre>';
+print_r($prices);
+echo '</pre>';
+die();
 ?>
 
 <div class="container">
@@ -25,10 +26,10 @@
                     <form method="post" class="mr-1" enctype="multipart/form-data">
                         
                         <div class="form-group">
-                            <select class="form-control" name="product_id" id="">
+                            <select class="form-control" name="price_id" id="">
                                 <?php foreach($prices as $price) : ?>
-                                    <option value="">
-                                        <?php echo $price->product_title ?> - <?php echo $price->price ?>
+                                    <option value=""> 
+                                        <?php echo $price->product_title ?> - price <?php echo $price->price ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>

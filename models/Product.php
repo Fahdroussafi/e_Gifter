@@ -105,11 +105,9 @@ class Product
         $stmt = null;
     }
     static public function addCode($data)
-    {
-        // SQL query to get the code of the product from table codes of that 
-        $stmt = DB::connect()->prepare('INSERT INTO codes (product_id,code)
-        VALUES (:product_id,:code)');
-        $stmt->bindParam(':product_id', $data['product_id']);
+    {   
+        $stmt = DB::connect()->prepare('INSERT INTO codes WHERE price_id = :price_id and code = :code');
+        $stmt->bindParam(':price_id', $data['price_id']);
         $stmt->bindParam(':code', $data['code']);
         if ($stmt->execute()) {
             return 'ok';
@@ -119,6 +117,7 @@ class Product
         // $stmt->close();
         $stmt = null;
     }
+   
     static public function editProduct($data)
     {
         $stmt = DB::connect()->prepare('UPDATE products SET 
