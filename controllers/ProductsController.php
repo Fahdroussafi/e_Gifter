@@ -5,7 +5,6 @@ class ProductsController
     public function getAllProducts()
     {
         $products = Product::getAll();
-        $products = Product::getAllwithlikes();
         return $products;
     }
     public function getRandomProducts()
@@ -57,16 +56,50 @@ class ProductsController
             $data = array( 
                 "product_title" => $_POST["product_title"],
                 "product_description" => $_POST["product_description"],
-                "product_quantity" => $_POST["product_quantity"],
                 "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto(),
-                // "old_price" => $_POST["old_price"],
-                "product_price" => $_POST["product_price"],
                 "product_category_id" => $_POST["product_category_id"],
             );
             $result = Product::addProduct($data);
             if ($result === "ok") {
                 Session::set("success", "Produit ajouté");
+                Redirect::to("products");
+            } else {
+                echo $result;
+            }
+        }
+    }
+    public function getPricesValue()
+    {
+        $prices = Product::getPrices();
+        return $prices;
+    }
+    public function newPrice()
+    {
+        if (isset($_POST["submit"])) { 
+            $data = array( 
+                "product_id" => $_POST["product_id"],
+                "price" => $_POST["price"],
+                "quantity" => $_POST["quantity"],
+            );
+            $result = Product::addPrices($data);
+            if ($result === "ok") {
+                Session::set("success", "Prix ajouté");
+                Redirect::to("products");
+            } else {
+                echo $result;
+            }
+        }
+    }
+    public function newCode(){
+        if (isset($_POST["submit"])) { 
+            $data = array( 
+                "product_id" => $_POST["product_id"],
+                "code" => $_POST["code"],
+            );
+            $result = Product::addCode($data);
+            if ($result === "ok") {
+                Session::set("success", "Code ajouté");
                 Redirect::to("products");
             } else {
                 echo $result;
@@ -81,11 +114,8 @@ class ProductsController
                 "product_id" => $_POST["product_id"],
                 "product_title" => $_POST["product_title"],
                 "product_description" => $_POST["product_description"],
-                "product_quantity" => $_POST["product_quantity"],
                 "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto($oldImage),
-                // "old_price" => $_POST["old_price"],
-                "product_price" => $_POST["product_price"],
                 "product_category_id" => $_POST["product_category_id"],
             );
             $result = Product::editProduct($data);

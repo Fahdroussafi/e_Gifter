@@ -94,15 +94,13 @@ if(isset($_POST["submit"]))
                         <div>
                             <div class="inline-block align-bottom mr-5">
                                 <span class="text-2xl leading-none align-baseline text-black "> Starts At $</span>
-                                <span class="font-bold text-5xl leading-none align-baseline text-black"> <?php echo $product->product_price; ?> </span>
-                                <!-- <span class="text-2xl leading-none align-baseline text-black">.99</span> -->
+                                <span class="font-bold text-5xl leading-none align-baseline text-black"> 10 </span>
                             </div>
                             <div class="inline-block align-bottom">
 
 
                                 <form method="post" action="<?php echo BASE_URL; ?>checkout">
                                     <div class="form-group">
-                                        <!-- <input type="hidden" name="product_image" value="<?php echo $product->product_image; ?>"> -->
                                         <input type="number" name="product_qte" id="product_qte" class="text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-white" value="1">
                                         <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">

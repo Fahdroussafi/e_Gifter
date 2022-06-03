@@ -13,8 +13,6 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="./views/src/output.css" rel="stylesheet">
-
-
 </head>
 
 <?php {
@@ -87,19 +85,17 @@
                     </div>
                     <div class="card-body flex flex-col items-center justify-center">
                         <h1 class="text-black font-bold text-2xl font-proza"><?= $product['product_title'] ?></h1>
-                        <p class="text-black font-proza">Starting at <?= $product['product_price'] ?>$</p>
+                        <p class="text-black font-proza">Starting at 10 $</p>
                     </div>
                     <div class="flex gap-2 justify-center">
 
-                        <!-- <a onclick="addToBasket(this)" data-prod-maxqte="<?= $product['product_quantity'] ?>" data-prod-id="<?= $product['product_id'] ?>" data-prod-nom="<?= $product['product_title'] ?>" data-prod-prix="<?= $product['product_price'] ?>" data-prod-image="<?= $product['product_image'] ?>">
-                            <img src="./public/img/add to cart.svg" class="duration-500 ease-in-out hover:scale-125"></a> -->
+                       
                         <form id="form" method="post" action="<?php echo BASE_URL ?>show">
                             <input type="hidden" name="product_id" id="product_id">
                         </form>
 
                         <a onclick="submitForm(<?php echo $product['product_id'];?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
 
-                        <a href="#"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></a>
                     </div>
                 </div>
 

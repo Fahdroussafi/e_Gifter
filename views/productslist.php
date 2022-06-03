@@ -114,7 +114,7 @@ if (isset($_POST["cat_id"])) {
                     </div>
                     <div class="card-body flex flex-col items-center justify-center">
                         <h1 class="text-black font-bold text-2xl font-proza"><?= $product['product_title'] ?></h1>
-                        <p class="text-black font-proza">Starting at <?= $product['product_price'] ?>$</p>
+                        <p class="text-black font-proza">Starting at 10 $</p>
                     </div>
                     <div class="button flex gap-2 justify-center">
 

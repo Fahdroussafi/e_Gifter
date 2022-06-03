@@ -43,21 +43,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <input type="number" autocomplete="off" 
-                            class="form-control" name="product_price" 
-                            placeholder="Prix" id="">
-                        </div>
-                        <!-- <div class="form-group">
-                            <input type="number" autocomplete="off" 
-                            class="form-control" name="old_price" 
-                            placeholder="Ancien Prix" id="">
-                        </div> -->
-                        <div class="form-group">
-                            <input type="number" autocomplete="off" 
-                            class="form-control" name="product_quantity" 
-                            placeholder="Quantité" id="">
-                        </div>
+                     
                          <div class="form-group">
                             <input type="file"
                             class="form-control" name="image" >

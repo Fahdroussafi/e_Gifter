@@ -44,8 +44,6 @@
                 <thead>
                     <tr>
                         <th>Libellé</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
                         <th>Description</th>
                         <th>Image</th>
                         <th>Action</th>
@@ -55,8 +53,6 @@
                     <?php foreach($products as $product) :?>
                     <tr>
                         <td><?php echo $product["product_title"];?></td>
-                        <td><?php echo $product["product_price"];?></td>
-                        <td><?php echo $product["product_quantity"];?></td>
                         <td><?php echo substr($product["product_description"],0,100);?></td>
                         <td>
                             <img width="50" height="50" 

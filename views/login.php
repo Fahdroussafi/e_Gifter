@@ -1,13 +1,5 @@
 <?php
-    if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true){
-        Redirect::to("home");
-    }
-    // if admin == 1 redirect to dashboard
-    // if(isset($_SESSION["admin"]) && $_SESSION["admin"] === true){
-    //     Redirect::to("dashboard");
-    // }
-    
-  
+
     $loginUser = new UsersController();
     $loginUser->auth();
 ?>
@@ -27,6 +19,9 @@
 
 
 <body>
+<?php
+include './views/includes/alerts.php';
+?>
 
     <!-- form -->
     <div class="right">

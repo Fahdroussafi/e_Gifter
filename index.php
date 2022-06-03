@@ -5,32 +5,32 @@ require_once './autoload.php';
 $home = new HomeController();
 
 $pages = [
-        'home','cart','dashboard','updateProduct','deleteProduct',
-        'addProduct','emptycart','show','cancelcart','register',
-        'login','checkout','logout','productslist','orders','addOrder','about','contact','userorders','products','like','unlike','wishlist',
-        'likes'
-    ];
+    'home', 'cart', 'dashboard', 'updateProduct', 'deleteProduct',
+    'addProduct', 'emptycart', 'show', 'cancelcart', 'register',
+    'login', 'checkout', 'logout', 'productslist', 'orders', 'addOrder', 'about', 'contact', 'userorders', 'products', 'like', 'unlike', 'wishlist',
+    'likes','addprices','addtostock'
+];
 
-if(isset($_GET['page'])){
-    if(in_array($_GET['page'],$pages)){
+if (isset($_GET['page'])) {
+    if (in_array($_GET['page'], $pages)) {
         $page = $_GET['page'];
-        if($page === "dashboard" || $page === "deleteProduct"
+        if (
+            $page === "dashboard" || $page === "deleteProduct"
             || $page === "addProduct"  || $page === "updateProduct" || $page === "products" ||
-            $page === "orders"){
-                if(isset($_SESSION['admin']) && $_SESSION['admin'] == true){
-                    $admin = new AdminController();
-                    $admin->index($page);
-                }else{
-                    include('views/includes/404.php');
-                }
-        }else{
+            $page === "orders" || $page === "addprices" || $page === "addtostock"
+        ) {
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                $admin = new AdminController();
+                $admin->index($page);
+            } else {
+                include('views/includes/404.php');
+            }
+        } else {
             $home->index($page);
         }
-    }else{
+    } else {
         include('views/includes/404.php');
     }
-}else{
+} else {
     $home->index("home");
 }
-
-

@@ -4,15 +4,7 @@ class Product
 {
     static public function getAll()
     {
-        $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products');
-        $stmt->execute();
-        return $stmt->fetchAll(); // returns an array of arrays
-        // $stmt->close(); // close the statement
-        $stmt = null; // close connection
-    }
-    static public function getAllwithlikes()
-    {
-        $stmt = DB::connect()->prepare('SELECT products.*,(SELECT COUNT(*) FROM wishlist WHERE product_id = products.product_id) as liked from products');
+        $stmt = DB::connect()->prepare('SELECT * FROM products');
         $stmt->execute();
         return $stmt->fetchAll(); // returns an array of arrays
         // $stmt->close(); // close the statement
@@ -30,8 +22,8 @@ class Product
     {
         $id = $data['id'];
         try {
-            // $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
-            $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_category_id = :id');
+            $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
+            // $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_category_id = :id');
             $stmt->execute(array(":id" => $id));
             return $stmt->fetchAll();
             // $stmt->close();
@@ -44,7 +36,7 @@ class Product
     {
         $id = $data['id'];
         try {
-             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
+            $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
             // $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_id = :id');
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
@@ -70,19 +62,22 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
+    static public function getPrices(){
+            // get price id from codes table 
+            $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id= products.product_id;");
+            $stmt->execute();
+            $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $prices;
+
+    }
 
     static public function addProduct($data)
     {
-        $stmt = DB::connect()->prepare('INSERT INTO products (product_title
-        ,product_description,product_quantity,product_image,
-        product_price,short_desc,product_category_id)
-        VALUES (:product_title,:product_description,:product_quantity,:product_image,
-        :product_price,:short_desc,:product_category_id)');
+        $stmt = DB::connect()->prepare('INSERT INTO products (product_title,product_description,product_image,short_desc,product_category_id)
+        VALUES (:product_title,:product_description,:product_image,:short_desc,:product_category_id)');
         $stmt->bindParam(':product_title', $data['product_title']);
         $stmt->bindParam(':product_description', $data['product_description']);
-        $stmt->bindParam(':product_quantity', $data['product_quantity']);
         $stmt->bindParam(':product_image', $data['product_image']);
-        $stmt->bindParam(':product_price', $data['product_price']);
         $stmt->bindParam(':short_desc', $data['short_desc']);
         $stmt->bindParam(':product_category_id', $data['product_category_id']);
         if ($stmt->execute()) {
@@ -93,15 +88,43 @@ class Product
         // $stmt->close();
         $stmt = null;
     }
-
+    
+    static public function addPrices($data)
+    {
+        $stmt = DB::connect()->prepare('INSERT INTO prices (product_id,price,quantity)
+        VALUES (:product_id,:price,:quantity)');
+        $stmt->bindParam(':product_id', $data['product_id']);
+        $stmt->bindParam(':price', $data['price']);
+        $stmt->bindParam(':quantity', $data['quantity']);
+        if ($stmt->execute()) {
+            return 'ok';
+        } else {
+            return 'error';
+        }
+        // $stmt->close();
+        $stmt = null;
+    }
+    static public function addCode($data)
+    {
+        // SQL query to get the code of the product from table codes of that 
+        $stmt = DB::connect()->prepare('INSERT INTO codes (product_id,code)
+        VALUES (:product_id,:code)');
+        $stmt->bindParam(':product_id', $data['product_id']);
+        $stmt->bindParam(':code', $data['code']);
+        if ($stmt->execute()) {
+            return 'ok';
+        } else {
+            return 'error';
+        }
+        // $stmt->close();
+        $stmt = null;
+    }
     static public function editProduct($data)
     {
         $stmt = DB::connect()->prepare('UPDATE products SET 
                 product_title = :product_title,
                 product_description=:product_description,
-                product_quantity=:product_quantity,
                 product_image=:product_image,
-                product_price=:product_price,
                 short_desc=:short_desc,
                 product_category_id=:product_category_id
                 WHERE product_id=:product_id
@@ -109,9 +132,7 @@ class Product
         $stmt->bindParam(':product_id', $data['product_id']);
         $stmt->bindParam(':product_title', $data['product_title']);
         $stmt->bindParam(':product_description', $data['product_description']);
-        $stmt->bindParam(':product_quantity', $data['product_quantity']);
         $stmt->bindParam(':product_image', $data['product_image']);
-        $stmt->bindParam(':product_price', $data['product_price']);
         $stmt->bindParam(':short_desc', $data['short_desc']);
         $stmt->bindParam(':product_category_id', $data['product_category_id']);
         if ($stmt->execute()) {
@@ -123,25 +144,27 @@ class Product
         $stmt = null;
     }
 
-    static public function deleteProduct($data){
+    static public function deleteProduct($data)
+    {
         $id = $data['id'];
-        try{
+        try {
             $stmt = DB::connect()->prepare('DELETE FROM products WHERE product_id = :id');
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 return 'ok';
-            }else{
+            } else {
                 return 'error';
             }
             // $stmt->close();
-            $stmt =null;
-        }catch(PDOException $ex){
-            echo "erreur " .$ex->getMessage();
+            $stmt = null;
+        } catch (PDOException $ex) {
+            echo "erreur " . $ex->getMessage();
         }
     }
 
-    static public function getTotalPrice() {
+    static public function getTotalPrice()
+    {
         $stmt = DB::connect()->prepare('SELECT SUM(total) AS total FROM orders');
         $stmt->execute();
         $total = $stmt->fetch(PDO::FETCH_OBJ);

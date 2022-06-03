@@ -14,9 +14,9 @@ class UsersController
                 $_SESSION["admin"] = $result->admin;
                 $_SESSION["user_id"] = $result->user_id;
                 Redirect::to("home");
-                // if admin == 1 redirect to dashboard
-            } else if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
-                Redirect::to("dashboard");
+                if ($result->admin == true) {
+                    Redirect::to("dashboard");
+                }
             } else {
                 Session::set("error", "Pseudo ou mot de passe est incorrect");
                 Redirect::to("login");
