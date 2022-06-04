@@ -101,7 +101,7 @@ if(isset($_POST["submit"]))
 
                                 <form method="post" action="<?php echo BASE_URL; ?>checkout">
                                     <div class="form-group">
-                                        <input type="number" name="product_qte" id="product_qte" class="text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-white" value="1">
+                                        <input type="number" name="product_qte" id="product_qte" class="text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-white" value="1" min="1">
                                         <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                         <input type="hidden" name="selectedPrice" id="price" value="">

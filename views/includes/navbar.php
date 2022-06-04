@@ -1,23 +1,19 @@
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<div id="preloder">
-        <div class="loader"></div>
-    </div>
 <div class='w-full'>
     <nav class="relative px-6">
         <div class="flex items-center justify-between flex-wrap">
             <div class="flex-wrap"><img src="<?php echo BASE_URL; ?>./public/img/logo.png" alt="logo"></div>
 
-            <ul class="w-8/12 flex font-sans  text-xl items-center text-white justify-center space-x-8 flex-wrap">
-                <li><a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>">Home</a>
+            <ul class="w-8/12 flex font-sans font-bold text-xl items-center text-white justify-center space-x-8 flex-wrap list-none	">
+                <li><a class="hover:text-red-600 duration-500 font-proza" href="<?php echo BASE_URL; ?>">Home</a>
                 </li>
                 <li>
-                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>about">About</a>
+                    <a class="hover:text-red-600 duration-500 font-proza" href="<?php echo BASE_URL; ?>about">About</a>
                 </li>
                 <li>
-                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>productslist">Products</a>
+                    <a class="hover:text-red-600 duration-500 font-proza" href="<?php echo BASE_URL; ?>productslist">Products</a>
                 </li>
                 <li>
-                    <a class="hover:text-red-600 duration-500" href="<?php echo BASE_URL; ?>contact">Contact</a>
+                    <a class="hover:text-red-600 duration-500 font-proza" href="<?php echo BASE_URL; ?>contact">Contact</a>
                 </li>
             </ul>
 
@@ -49,9 +45,9 @@
                                         My Profile
                                     </a>
                                 </li>
-                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>userorders">My Orders</a></li>
-                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>likes">Wishlist</a></li>
-                                <li class="text-white hover:text-red-600"><a href="<?php echo BASE_URL; ?>logout">Log out</a></li>
+                                <li class="text-white hover:text-red-600 font-proza font-bold"><a href="<?php echo BASE_URL; ?>userorders">My Orders</a></li>
+                                <li class="text-white hover:text-red-600 font-proza font-bold"><a href="<?php echo BASE_URL; ?>likes">Wishlist</a></li>
+                                <li class="text-white hover:text-red-600 font-proza font-bold"><a href="<?php echo BASE_URL; ?>logout">Log out</a></li>
                             </ul>
                         </div>
 

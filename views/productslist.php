@@ -23,14 +23,10 @@ if (isset($_POST["cat_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="./views/src/output.css" rel="stylesheet">
-    <script src="./public/js/main.js"></script>
-    <script src="./public/js/jquery.min.js"></script>
 
    
 
@@ -51,18 +47,9 @@ if (isset($_POST["cat_id"])) {
             color: #080808;
             font-weight: bold;
         }
-
-        .ink {
-            font-family: ink free;
-        }
-
-        /* .button {
-            background-color: red;
-        } */
     </style>
     <section class="mainabout">
         <header>
-
             <?php
             include './views/includes/navbar.php';
             ?>
@@ -73,7 +60,7 @@ if (isset($_POST["cat_id"])) {
 
     <section class="bg-black my-5 flex flex-wrap">
         <img src="./public/img/giftcard.png" class="flex justify-start" alt="gift card">
-        <h1 class="text-white ink text-5xl m-auto py-10 px-5 flex justify-center">Our Products</h1>
+        <h1 class="text-white font-ink text-5xl m-auto py-10 px-5 flex justify-center">Our Products</h1>
     </section>
 
 

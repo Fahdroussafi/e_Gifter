@@ -16,9 +16,6 @@
 
 <body>
     <!-- navbar -->
-    <style>
-
-    </style>
     <section class="main">
         <header>
             <?php
@@ -30,9 +27,9 @@
 
         <div class="flex items-center min-h-screen">
             <div class="container mx-auto">
-                <div class="max-w-md mx-auto my-10 p-5 rounded-md shadow-sm bg-slate-50">
+                <div class="max-w-md mx-auto my-10 p-5 rounded-md shadow-sm bg-slate-100">
                     <div class="text-center">
-                        <h1 class="my-3 text-4xl font-semibold text-black">Contact Us</h1>
+                        <h1 class="my-3 text-4xl font-semibold text-black font-ink">Contact Us</h1>
                         <p class="text-black">Fill up the form below to send us a message.</p>
                     </div>
                     <div class="m-7">
@@ -44,16 +41,16 @@
 
                             <div class="mb-6">
                                 <label for="name" class="block mb-2 text-xl text-black">Full Name</label>
-                                <input type="text" name="name" id="name" placeholder="Name" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700" />
+                                <input type="text" name="name" id="name" placeholder="Name" required class="w-full px-3 py-2 border border-black rounded-md focus:outline-none dark:bg-gray-700" />
                             </div>
                             <div class="mb-6">
                                 <label for="email" class="block mb-2 text-xl text-black">Email Address</label>
-                                <input type="email" name="email" id="email" placeholder="Email" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700 " />
+                                <input type="email" name="email" id="email" placeholder="Email" required class="w-full px-3 py-2 border border-black rounded-md focus:outline-none dark:bg-gray-700" />
                              </div>
                             <div class="mb-6">
                                 <label for="message" class="block mb-2 text-xl text-black ">Your Message</label>
 
-                                <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700" required></textarea>
+                                <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-3 py-2 border border-black rounded-md focus:outline-none dark:bg-gray-700" required></textarea>
                             </div>
                             <div class="mb-6">
                                 <button type="submit" class="w-full px-3 py-4 text-black bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">Send Message</button>
@@ -65,7 +62,6 @@
                 </div>
             </div>
         </div>
-
 
     </section>
 </body>
