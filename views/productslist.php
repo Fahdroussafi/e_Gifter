@@ -9,29 +9,10 @@ if (isset($_POST["cat_id"])) {
     $products = $data->getAllProducts(); // get all products from database and store in $products array variable
 }
 
-// if (isset($_POST["add"])) {
-//   var_dump($_POST["product_id"]);
-// }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>./public/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link href="./views/src/output.css" rel="stylesheet">
-    <script src="./public/js/main.js"></script>
-
-   
-
-</head>
+<title>Products</title>
+  
 <?php
     include('./views/includes/alerts.php')
 ?>

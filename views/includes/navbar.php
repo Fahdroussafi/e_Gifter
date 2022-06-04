@@ -39,9 +39,9 @@
                                 </div>
                             </button>
                             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow text-white bg-base-100 rounded-box w-52">
-                                <li class="text-white text-center">
+                                <li class="text-white text-center font-proza font-bold">
                                     <?php echo $_SESSION["fullname"]; ?>
-                                    <a href="<?php echo BASE_URL; ?>/user" class="justify-between hover:text-red-800">
+                                    <a href="<?php echo BASE_URL; ?>/user" class="justify-between hover:text-red-600 font-proza font-bold">
                                         My Profile
                                     </a>
                                 </li>
