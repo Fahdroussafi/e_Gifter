@@ -38,12 +38,12 @@
 
         <!-- component -->
         <div class="py-32 bg-slate-100">
-            <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+            <div class="container m-auto px-6  md:px-12 xl:px-6">
                 <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
                     <div class="md:7/12 lg:w-6/12">
                         <h1 class="text-5xl font-bold text-black md:text-5xl font-ink">About US</h1>
-                        <p class="mt-6  text-2xl text-black font-proza">Gift Cards are a quick and flexible way to give someone exactly what they want - whether it's for a birthday, holiday, graduation, wedding, or any other special occasion.</p>
-                        <p class="mt-4  text-2xl text-black font-proza"> There are two types of Gift Cards that you can purchase - eGift Cards and Digital Gift Cards.</p>
+                        <p class="mt-6 text-2xl text-black font-proza">Gift Cards are a quick and flexible way to give someone exactly what they want - whether it's for a birthday, holiday, graduation, wedding, or any other special occasion.</p>
+                        <p class="mt-4 text-2xl text-black font-proza"> There are two types of Gift Cards that you can purchase - eGift Cards and Digital Gift Cards.</p>
                     </div>
                     <div class="md:5/12 lg:w-5/12">
                         <img src="./public/img/gift.png" alt="image" loading="lazy" width="" height="">

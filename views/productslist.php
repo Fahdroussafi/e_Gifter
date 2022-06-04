@@ -27,6 +27,7 @@ if (isset($_POST["cat_id"])) {
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="./views/src/output.css" rel="stylesheet">
+    <script src="./public/js/main.js"></script>
 
    
 
@@ -113,19 +114,7 @@ if (isset($_POST["cat_id"])) {
 
                         <a onclick="submitForm(<?php echo $product['product_id']; ?>)" class="bg-red-600  text-white rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
 
-                        <!-- <div id="like-<?= $product['product_id'] ?>" style="display: inline;">
-
-                            <?php if ($product['liked'] == TRUE) { ?>
-                                <a href="javascript:unlikeProduct(<?= $product['product_id'] ?>)" class="btn heart"><i class='fas fa-heart-broken'></i></a><?php } 
-                                else { ?> <a href="javascript:likeProduct(<?= $product['product_id'] ?>)" class="btn heart"><i class="fas fa-heart"></i></a><?php } ?>
-                        </div>
-                         -->
-                        <!-- <form method="post" action="<?php echo BASE_URL ?>productslist">
-
-                            <input value="<?php echo $product['product_id'] ?>" type="hidden" name="product_id" id="product_id">
-
-                            <button type="submit"><img src="./public/img/add to wishlist.svg" alt="add to wishlist" class="duration-500 ease-in-out hover:scale-125"></button>
-                        </form> -->
+                     
 
                     </div>
                 </div>
