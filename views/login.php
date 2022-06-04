@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>./public/css/login.css">
 </head>
 
-
 <body>
 <?php
 include './views/includes/alerts.php';

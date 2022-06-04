@@ -14,7 +14,6 @@ if (isset($_POST["product_id"])) {
     // echo '<pre>';
     // print_r($selectedPrice);
     // exit;
-    // $data->decreaseProductquantity();
 
 
     if ($_SESSION["products_" . $id]["title"] == $_POST["product_title"]) {

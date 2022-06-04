@@ -1,6 +1,4 @@
 <title>Cart</title>
-
-<script src="https://www.paypal.com/sdk/js?client-id=AZw6O6tc7UhTWz2cNKSSzG_-ASZlWVO30PNwPFZpxiPKJyOfFuA5ugiPLfzwSpjS0wiCPv5kDW35__Yu&components=buttons"></script>
     
 <?php
 // echo '<pre>';

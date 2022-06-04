@@ -2,45 +2,26 @@
 
 $data = new ProductsController();
 $product = $data->getProduct();
-// echo '<pre>';
-// var_dump($product);
-// echo '</pre>';
-// die;
-$value = $data->getValue();
-// echo '<pre>';
-// print_r($_POST);
-$id=$_POST['product_id'];
-// echo '</pre>';
-// die;
-// add to wishlist
 
-if(isset($_POST["submit"]))
-{
+$value = $data->getValue();
+
+$id = $_POST['product_id'];
+
+if (isset($_POST["submit"])) {
     $data = new UsersController();
     $product = $data->like();
-    // alert message
-    // echo '<script>alert("Produit ajouté à la wishlist")</script>';
 }
-
 ?>
 
-    <title>Product INFORMATIONS</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.3/dist/full.css" rel="stylesheet" type="text/css" />
-    
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link href="./views/src/output.css" rel="stylesheet">
-    <script src="./public/js/main.js"></script>
-
+<title>Product</title>
 </head>
 <?php
-    include('./views/includes/alerts.php')
+include('./views/includes/alerts.php')
 ?>
 
 <body>
     <style>
         .mainabout {
-            /* background: gray; */
             padding: 1vw 2vw 0 2vw;
         }
 
@@ -108,9 +89,9 @@ if(isset($_POST["submit"]))
                                     </select>
                                 </form>
                                 <form method="post" action="">
-                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>" >
+                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                     <button name="submit" class="btn heart"><i class="fas fa-heart"></i></button>
-                                </form> 
+                                </form>
                             </div>
                         </div>
                     </div>
