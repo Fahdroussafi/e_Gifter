@@ -11,14 +11,10 @@ if (isset($_POST["product_id"])) {
     $product = $data->getProduct();
     // $price = $data->getValue();
 
-    // echo '<pre>';
-    // print_r($selectedPrice);
-    // exit;
-
-
     if ($_SESSION["products_" . $id]["title"] == $_POST["product_title"]) {
-        Session::set("info", "You already added this product to your cart!");
-        Redirect::to("cart");
+        echo "<script>alert('Product already added to cart');</script>";
+        echo "<script>window.location.href = 'cart';</script>";
+
     } else {
         // if ($product->product_quantity < $_POST["product_qte"]) {
         //     Session::set("info", "The Available Quantity is : $product->product_quantity");
@@ -36,7 +32,8 @@ if (isset($_POST["product_id"])) {
             // show number of products in cart
             // $_SESSION["count"] = count($_SESSION);
             $_SESSION["count"] += 1;
-            Redirect::to("cart");
+            Session::set("success", "Product added to cart successfully");
+            Redirect::to("productslist");
     }
 } else {
     Redirect::to("cart");

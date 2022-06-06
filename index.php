@@ -7,8 +7,9 @@ $home = new HomeController();
 $pages = [
     'home', 'cart', 'dashboard', 'updateProduct', 'deleteProduct',
     'addProduct', 'emptycart', 'show', 'cancelcart', 'register',
-    'login', 'checkout', 'logout', 'productslist', 'orders', 'addOrder', 'about', 'contact', 'userorders', 'products', 'like', 'unlike', 'wishlist',
-    'likes','addprices','addtostock'
+    'login', 'checkout', 'logout', 'productslist', 'orders', 'addOrder', 'about',
+    'products', 'like', 'unlike', 'wishlist', 'contact',
+    'likes','addprices','addtostock','myprofile','userorders','nav'
 ];
 
 if (isset($_GET['page'])) {

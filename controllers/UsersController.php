@@ -18,7 +18,7 @@ class UsersController
                     Redirect::to("dashboard");
                 }
             } else {
-                Session::set("error", "Pseudo ou mot de passe est incorrect");
+                Session::set("error", "User or password incorrect");
                 Redirect::to("login");
             }
         }
@@ -37,17 +37,48 @@ class UsersController
         );
         $result = User::createUser($data);
         if ($result === "ok") {
-            Session::set("success", "Compte crée");
+            Session::set("success", "Account created successfully");
             Redirect::to("login");
         } else {
             echo $result;
         }
+        if ($result === "error") {
+            Session::set("error", "Email is already used");
+            Redirect::to("register");
+        }
     }
+
+    public function updateUser()
+    {
+        $data = array(
+            "fullname" => $_POST["fullname"],
+            "username" => $_POST["username"],
+            "email" => $_POST["email"],
+            "user_id" => $_POST["user_id"],
+        );
+        $result = User::update($data);
+        if ($result === "ok") {
+            Session::set("success", "user updated");
+            Redirect::to("home");
+        } else {
+            echo $result;
+        }
+    }
+
+    public function getUser()
+    {
+        if (isset($_POST["user_id"])) {
+            $data = array(
+                'user_id' => $_POST["user_id"]
+            );
+            $user = User::getUserById($data);
+            return $user;
+        }
+    }
+
+
     public function like()
     {
-        // print_r($_POST);
-        // die;
-        
         if (isset($_POST["submit"])) {
             $data = array(
                 "user_id" => $_SESSION["user_id"],
@@ -63,21 +94,18 @@ class UsersController
             }
         }
     }
-        public function unlike($product_id)
-        {
-            if (isset($_POST["submit"])) {
-                $data = array(
-                    "user_id" => $_SESSION["user_id"],
-                    "product_id" => $product_id,
-                );
-                $result = Wishlist::add($data);
-                if ($result === "ok") {
-                    Redirect::to("home");
-                } else {
-                    echo $result;
-             }  
+    public function unlike($pid)
+    {
+        $result = Wishlist::remove($pid);
+        if ($result === "ok") {
+            Session::set("error", "Produit supprimé de la wishlist");
+            Redirect::to("likes");
+        } else {
+            Session::set("error", "Produit non supprimé de la wishlist");
+            Redirect::to("likes");
         }
     }
+
     public function ShowWishlist()
     {
         $wishlist = Wishlist::getAll();
@@ -86,12 +114,6 @@ class UsersController
 
     public function logout()
     {
-        // keep what the user added in the cart in the session before logout 
-        if (isset($_SESSION["cart"])) {
-            $cart = $_SESSION["cart"];
-            $_SESSION["cart"] = $cart;
-        }
         session_destroy();
-        Redirect::to("login");
     }
 }

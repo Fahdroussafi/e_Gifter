@@ -104,19 +104,6 @@ class Product
         // $stmt->close();
         $stmt = null;
     }
-    static public function addCode($data)
-    {   
-        $stmt = DB::connect()->prepare('INSERT INTO codes WHERE price_id = :price_id and code = :code');
-        $stmt->bindParam(':price_id', $data['price_id']);
-        $stmt->bindParam(':code', $data['code']);
-        if ($stmt->execute()) {
-            return 'ok';
-        } else {
-            return 'error';
-        }
-        // $stmt->close();
-        $stmt = null;
-    }
    
     static public function editProduct($data)
     {

@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>./public/css/login.css">
     <link rel="stylesheet" href="file:C:/Users/YC/Desktop/fontawesome/css/all.css">
     <link href="http://fonts.cdnfonts.com/css/proza-libre" rel="stylesheet">
@@ -23,7 +23,9 @@
 </head>
 
 <body>
-
+<?php
+include './views/includes/alerts.php';
+?>
      <!-- form -->
     <div class="right">
 
@@ -40,7 +42,7 @@
 				<input type="text" placeholder="Enter your email" name="email">
         </div>
         <div class="input-group">
-				<input type="password" placeholder="Enter your password" name="password">
+				<input type="password" placeholder="Enter your password" name="password" min="6">
         </div>
         <button name="submit" class="btn-submit">Register</button>
 

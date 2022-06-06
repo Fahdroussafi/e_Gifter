@@ -7,7 +7,7 @@ class Order
         $stmt = DB::connect()->prepare('SELECT * FROM orders');
         $stmt->execute();
         return $stmt->fetchAll();
-        $stmt->close();
+        // $stmt->close();
         $stmt = null;
     }
 

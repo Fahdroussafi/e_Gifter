@@ -1,9 +1,9 @@
-<footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+<footer class="footer footer-center p-10 text-base-content font-proza rounded bg-[#080808]">
   <div class="grid grid-flow-col gap-4">
-    <a class="link link-hover">About us</a> 
-    <a class="link link-hover">Contact</a> 
-    <a class="link link-hover">Jobs</a> 
-    <a class="link link-hover">Press kit</a>
+    <a href="<?php echo BASE_URL ?>" class="link link-hover text-[#FBF8F3] ">Home</a> 
+    <a href="<?php echo BASE_URL ?>about" class="link link-hover text-[#FBF8F3]">About us</a> 
+    <a href="<?php echo BASE_URL ?>productslist" class="link link-hover text-[#FBF8F3]">Our Products</a> 
+    <a href="<?php echo BASE_URL ?>contact" class="link link-hover text-[#FBF8F3]">Contact Us</a>
   </div> 
   <div>
     <div class="grid grid-flow-col gap-4">
@@ -13,7 +13,7 @@
     </div>
   </div> 
   <div>
-    <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+    <p class="text-[#FBF8F3]">Copyright © 2022 - All right reserved by eGifter</p>
   </div>
 </footer>
 

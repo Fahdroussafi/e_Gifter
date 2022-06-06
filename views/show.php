@@ -35,12 +35,10 @@ include('./views/includes/alerts.php')
         }
     </style>
     <section class="mainabout">
-        <header>
 
             <?php
             include './views/includes/navbar.php';
             ?>
-        </header>
 
         <style>
             @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
@@ -74,12 +72,12 @@ include('./views/includes/alerts.php')
                                         <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                         <input type="hidden" name="selectedPrice" id="price" value="">
-                                        <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> ADD TO CART</button>
+                                        <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
 
                                     </div>
 
 
-                                    <select name="price_id" id="product_price" class="text-black border-2 border-emerald-600" required>
+                                    <select name="price_id" id="product_price" class="text-black border-2" required>
                                         <option class="text-black" value="">Choose price</option>'
                                         <?php
                                         foreach ($value as $values) {

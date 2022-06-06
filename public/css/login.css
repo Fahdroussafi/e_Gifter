@@ -75,13 +75,7 @@
     color: #F4F5E2;
     transition: background-color 0.3s ease-in-out;
   }
-  
-  /* @media screen and (max-width:430px) {
-    body{background-position: left}
-    .container{background-color: transparent}
-    input{max-width: 300px}
-    label{color: #fff}
-  } */
+
   h1 {
     font-size: 60px;
     font-family: ink free;

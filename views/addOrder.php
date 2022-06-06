@@ -12,8 +12,6 @@ foreach ($_SESSION as $name => $product) {
             "total" => $product["total"]
         );
 
-
-
         $order->addOrder($data);
     } else {
         Redirect::to("cart");
