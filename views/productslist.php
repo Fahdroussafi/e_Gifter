@@ -92,8 +92,6 @@ if (isset($_POST["cat_id"])) {
 
                         <a onclick="submitForm(<?php echo $product['product_id']; ?>)" class="bg-[#CC0000]  text-[#FBF8F3] rounded-full w-2/3 text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500 ease-in-out hover:scale-95 ">SEE MORE</a>
 
-
-
                     </div>
                 </div>
 

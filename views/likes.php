@@ -1,11 +1,7 @@
 <?php
-// $data = new ProductsController();
-// $products = $data->getAllProducts();
+
 $user = new UsersController();
 $wishlist = $user->ShowWishlist();
-// echo "<pre>";
-// print_r($wishlist);
-// echo "</pre>";
 
 if (isset($_POST["remove"])) {
     $pid = $_POST["remove"];
@@ -13,7 +9,6 @@ if (isset($_POST["remove"])) {
 }
 ?>
 <title>Wishlist</title>
-<!-- navbar -->
 <style>
     .mainabout {
         --tw-bg-opacity: 1;
@@ -32,16 +27,17 @@ if (isset($_POST["remove"])) {
     <?php
     include './views/includes/alerts.php';
     ?>
+    <div class="flex justify-center py-16 font-ink text-5xl font-bold text-[#080808]">My Wishlist</div>
     <div class="relative overflow-x-auto sm:rounded-lg min-h-screen py-20">
-        <table class="w-full text-sm text-left text-[#080808]">
-            <thead class="text-base text-[#080808]  uppercase bg-[##080808]">
+        <table class="w-full text-base text-left text-[#080808]">
+            <thead class="text-base text-[#080808] uppercase">
 
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Product name
+                        Product Brand
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Image
+                        Product Image
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Category
@@ -54,25 +50,34 @@ if (isset($_POST["remove"])) {
             </thead>
             <tbody>
                 <?php foreach ($wishlist as $wish) : ?>
-                    <tr class=" border-b border-black p-0  rounded">
-                        <th scope="row" class="px-6 py-4 font-medium text-[##080808] whitespace-nowrap text-base sm-text-sm font-proza">
+                    <tr class="border-b border-black  rounded ">
+                        <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
                             <?php echo $wish['product_title']; ?>
                         </th>
-                        <td class="px-6 py-4 text-base sm-text-sm font-proza">
-                            <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $wish['product_image'] ?>" class="w-20" alt="image">
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808]">
+                            <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $wish['product_image'] ?>" class="w-24" alt="image">
                         </td>
-                        <td class="px-6 py-4 text-base sm-text-sm font-proza text-[##080808] ">
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?php echo $wish['cat_title']; ?>
                         </td>
-                        <td class="px-6 py-4 text-base text-right sm-text-sm font-proza">
+                        <td class="px-6 py-4 flex flex-row gap-5 justify-center">
                             <form method="POST">
                                 <input type="hidden" name="remove" value="<?= $wish['product_id'] ?>" />
-                                <button type="submit" class="btn btn-circle">
+                                <button type="submit" class="btn btn-circle bg-[#CC0000]">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </form>
+
+                            <form id="form" method="post" action="<?php echo BASE_URL ?>show">
+                                <input type="hidden" name="product_id" id="product_id">
+                            </form>
+
+                            <a onclick="submitForm(<?php echo $wish['product_id']; ?>)" class="btn btn-circle">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+
                         </td>
                     </tr>
             </tbody>
