@@ -3707,6 +3707,14 @@ body[dir="rtl"] .checkbox:checked,
   gap: 1rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-60 {
+  gap: 15rem;
+}
+
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -3822,6 +3830,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .border-r {
   border-right-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .border-\[\#080808\] {

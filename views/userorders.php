@@ -2,28 +2,84 @@
 $data = new OrdersController();
 $orders = $data->getUserOrders();
 
-// create a table that display orders with codes
 ?>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Produit</th>
-            <th>Quantité</th>
-            <th>Prix</th>
-            <th>Total</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($orders as $order) : ?>
-            <tr>
-                <td><?= $order->fullname ?></td>
-                <td><?= $order->product ?></td>
-                <td><?= $order->qte ?></td>
-                <td><?= $order->price ?></td>
-                <td><?= $order->total ?></td>
-                <td><?= $order->code ?></td>
-            </tr>
+<title>Orders</title>
+<style>
+    .mainabout {
+        --tw-bg-opacity: 1;
+        background-color: rgb(251 248 243 / var(--tw-bg-opacity));
+        padding: 1vw 2vw 0 2vw;
+    }
+
+    li {
+        color: #080808;
+    }
+</style>
+<section class="mainabout">
+    <?php
+    include './views/includes/navbar.php';
+    ?>
+    <div class="flex justify-center py-16 font-ink text-5xl font-bold text-[#080808]">My Orders</div>
+    <div class="relative overflow-x-auto sm:rounded-lg min-h-screen py-20">
+        <table class="w-full text-base text-left text-[#080808]">
+            <thead class="text-base text-[#080808] uppercase">
+
+                <tr class="border-b border-black ">
+                    <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Product Brand
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Quantity
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Total
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Product Code
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                <?php foreach ($orders as $order) : ?>
+                    <tr class="border-b border-black  rounded ">
+                        <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
+                            <?= $order->fullname ?>
+                        </th>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808]">
+                        <?= $order->product ?>
+                        </td>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                        <?= $order->qte ?>
+                        </td>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                        <?= $order->price ?>
+                        </td>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                        <?= $order->total ?>
+                        </td>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                        <?= $order->code ?>
+                        </td>
+
+                    </tr>
+            </tbody>
         <?php endforeach; ?>
-    </tbody>
+
+        </table>
+    </div>
+</section>
+</body>
+<!-- footer -->
+
+<?php
+include './views/includes/footer.php';
+?>
+<!-- end footer -->

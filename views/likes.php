@@ -32,8 +32,8 @@ if (isset($_POST["remove"])) {
         <table class="w-full text-base text-left text-[#080808]">
             <thead class="text-base text-[#080808] uppercase">
 
-                <tr>
-                    <th scope="col" class="px-6 py-3">
+                <tr class="border-b border-black ">
+                    <th scope="col" class="px-6 py-3">git
                         Product Brand
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -42,25 +42,27 @@ if (isset($_POST["remove"])) {
                     <th scope="col" class="px-6 py-3">
                         Category
                     </th>
-
                     <th scope="col" class="px-6 py-3">
-                        <span class="sr-only">Remove</span>
+                        Remove from Wishlist
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        See More
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($wishlist as $wish) : ?>
-                    <tr class="border-b border-black  rounded ">
-                        <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
+                    <tr class="border-b border-black ">
+                        <td class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
                             <?php echo $wish['product_title']; ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808]">
                             <img src="<?php echo BASE_URL; ?>./public/uploads/<?= $wish['product_image'] ?>" class="w-24" alt="image">
                         </td>
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?php echo $wish['cat_title']; ?>
                         </td>
-                        <td class="px-6 py-4 flex flex-row gap-5 justify-center">
+                        <td class="px-6 py-4 ">
                             <form method="POST">
                                 <input type="hidden" name="remove" value="<?= $wish['product_id'] ?>" />
                                 <button type="submit" class="btn btn-circle bg-[#CC0000]">
@@ -69,15 +71,14 @@ if (isset($_POST["remove"])) {
                                     </svg>
                                 </button>
                             </form>
-
+                        </td>
+                        <td class="px-6 py-4">
                             <form id="form" method="post" action="<?php echo BASE_URL ?>show">
                                 <input type="hidden" name="product_id" id="product_id">
                             </form>
-
                             <a onclick="submitForm(<?php echo $wish['product_id']; ?>)" class="btn btn-circle">
                                 <i class="fa-solid fa-circle-info"></i>
                             </a>
-
                         </td>
                     </tr>
             </tbody>

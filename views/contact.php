@@ -12,7 +12,7 @@
 
         <div class="flex items-center min-h-screen">
             <div class="container mx-auto">
-                <div class="max-w-3xl mx-auto my-10 p-5 rounded-md shadow-sm bg-[#FBF8F3] bg-opacity-75 ">
+                <div class="max-w-3xl mx-auto my-10 p-5 rounded-md shadow-sm bg-[#FBF8F3] ">
                     <div class="text-center">
                         <h1 class="my-3 text-5xl font-semibold text-[#080808] font-ink">Contact Us</h1>
                     </div>
