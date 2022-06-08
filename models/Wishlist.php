@@ -14,12 +14,11 @@ class Wishlist
 
     static public function add($data)
     { {
-            // if product is already in wishlist then alert user
             $stmt = DB::connect()->prepare('SELECT * FROM wishlist WHERE user_id = :user AND product_id = :product');
             $stmt->execute(array(":user" => $data["user_id"], ":product" => $data["product_id"]));
             $result = $stmt->fetchAll();
             if (count($result) > 0) {
-                return "Produit déjà dans la wishlist";
+                // return "Product is already in your wishlist";
             } else {
                 $stmt = DB::connect()->prepare('INSERT INTO wishlist (user_id, product_id) VALUES (:user, :product)');
                 $stmt->execute(array(":user" => $data["user_id"], ":product" => $data["product_id"]));

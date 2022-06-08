@@ -1,7 +1,4 @@
 <?php
-    $user = new UsersController();
-    $user->getUser();
-
     if (isset($_POST["update"])) 
     {
         $data = new UsersController();
@@ -17,6 +14,9 @@
     ?>
 
     <!-- end navbar -->
+    <?php
+    include('./views/includes/alerts.php')
+    ?>
 
     <div class="flex items-center min-h-screen">
         <div class="container mx-auto">
@@ -25,7 +25,7 @@
                     <h1 class="my-3 text-5xl font-semibold text-[#080808] font-ink">Update Profile</h1>
                 </div>
                 <div class="m-7">
-                    <form action="" method="POST">
+                    <form method="POST">
 
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-xl font-proza text-[#080808]">Full Name</label>

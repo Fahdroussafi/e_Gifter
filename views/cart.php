@@ -129,9 +129,9 @@
                                     <a href="<?php echo BASE_URL; ?>login" class="btn btn-link">Login to complete your orders</a>
                                 <?php endif; ?>
                                 <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder"></form>
-                                <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
+                                <!-- <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
                                 <button class="btn btn-primary">buy</button>
-                                </form>
+                                </form> -->
                             </div>
 
                         </div>

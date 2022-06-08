@@ -46,18 +46,5 @@ class User{
         // $stmt->close();
         $stmt = null;
     }
-
-       static public function getUserById($data)
-       {
-           $id = $data['id'];
-           try {
-               $stmt = DB::connect()->prepare('SELECT * FROM users WHERE user_id = :user_id');
-                $stmt->execute(array(':user_id' => $id));
-                $user = $stmt->fetch(PDO::FETCH_OBJ);
-                return $user;
-               $stmt = null;
-           } catch (PDOException $ex) {
-               echo "erreur " . $ex->getMessage();
-           }
-       }
-   }
+}
+        

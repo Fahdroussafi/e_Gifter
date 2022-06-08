@@ -54,28 +54,16 @@ class UsersController
             "fullname" => $_POST["fullname"],
             "username" => $_POST["username"],
             "email" => $_POST["email"],
-            "user_id" => $_POST["user_id"],
+            "user_id" => $_SESSION["user_id"],
         );
         $result = User::update($data);
         if ($result === "ok") {
             Session::set("success", "user updated");
-            Redirect::to("home");
+            Redirect::to("myprofile");
         } else {
             echo $result;
         }
     }
-
-    public function getUser()
-    {
-        if (isset($_POST["user_id"])) {
-            $data = array(
-                'user_id' => $_POST["user_id"]
-            );
-            $user = User::getUserById($data);
-            return $user;
-        }
-    }
-
 
     public function like()
     {
@@ -86,10 +74,10 @@ class UsersController
             );
             $result = Wishlist::add($data);
             if ($result === "ok") {
-                Session::set("success", "Produit ajouté à la wishlist");
+                Session::set("success", "Product added to your wishlist");
                 Redirect::to("productslist");
             } else {
-                Session::set("error", "Produit deja ajouté à la wishlist");
+                Session::set("error", "Product is already in your wishlist");
                 Redirect::to("likes");
             }
         }
@@ -98,10 +86,10 @@ class UsersController
     {
         $result = Wishlist::remove($pid);
         if ($result === "ok") {
-            Session::set("error", "Produit supprimé de la wishlist");
+            Session::set("error", "Product removed from your wishlist");
             Redirect::to("likes");
         } else {
-            Session::set("error", "Produit non supprimé de la wishlist");
+            Session::set("error", "Product is not in your wishlist");
             Redirect::to("likes");
         }
     }
