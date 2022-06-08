@@ -6,12 +6,10 @@ $orders = $data->getUserOrders();
 <title>Orders</title>
 <style>
     .mainabout {
-        --tw-bg-opacity: 1;
+        padding: 1vw 2vw 0 2vw;
         --tw-bg-opacity: 1;
         background-color: rgb(251 248 243 / var(--tw-bg-opacity));
     }
-
-
 
     li {
         color: #080808;
@@ -27,6 +25,9 @@ $orders = $data->getUserOrders();
             <thead class="text-base text-[#080808] uppercase">
 
                 <tr class="border-b border-black ">
+                    <th scope="col" class="px-6 py-3">
+                        Order Date
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Product Brand
                     </th>
@@ -49,6 +50,9 @@ $orders = $data->getUserOrders();
             <tbody>
                 <?php foreach ($orders as $order) : ?>
                     <tr class="border-b border-black  rounded ">
+                    <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
+                            <?= $order->done_at ?>
+                        </th>
                         <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
                             <?= $order->product ?>
                         </th>

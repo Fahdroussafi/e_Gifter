@@ -11,7 +11,7 @@ if (isset($_POST["remove"])) {
 <title>Wishlist</title>
 <style>
     .mainabout {
-        --tw-bg-opacity: 1;
+        padding: 1vw 2vw 0 2vw;
         --tw-bg-opacity: 1;
         background-color: rgb(251 248 243 / var(--tw-bg-opacity));
     }

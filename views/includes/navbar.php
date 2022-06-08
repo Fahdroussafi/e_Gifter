@@ -1,8 +1,10 @@
 <div class='w-full'>
     <nav class="px-2 sm:px-4 py-2.5">
         <div class="flex justify-between flex-wrap">
-            <div class=" sm:px-4 py-2.5"><img src="<?php echo BASE_URL; ?>./public/img/logo.png" alt="logo">
-                <a href="<?php echo BASE_URL; ?>"></a>
+            <div class=" sm:px-4 py-2.5">
+                <a  href="<?php echo BASE_URL;?>">
+                    <img src="./public/img/logo.png" alt="logo">
+                </a>
             </div>
 
             <ul class="lg:w-8/12 flex font-sans font-bold text-xl items-center text-[#FBF8F3] justify-center space-x-8 flex-wrap list-none">
