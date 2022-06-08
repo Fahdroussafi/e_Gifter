@@ -31,7 +31,7 @@
     <!-- end part1 -->
 
     <!--- Hero Section -->
-    <div class="hero min-h-fit-screen bg-[#F4F5E2] py-20">
+    <div class="hero min-h-fit-screen bg-[#FBF8F3] py-20">
         <div class="hero-content flex-col lg:flex-row">
             <img src="./public/img/giftcards.jpg" class="rounded-full object-cover h-full w-full" />
             <div>

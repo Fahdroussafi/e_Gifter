@@ -18,14 +18,14 @@ if (isset($_POST["submit"])) {
 include('./views/includes/alerts.php')
 ?>
 
-<body>
+<body class="bg-[#FBF8F3] min-h-screen" >
     <style>
         .mainabout {
             padding: 1vw 2vw 0 2vw;
         }
 
         li {
-            color: #F4F5E2;
+            color: #080808;
             font-weight: bold;
         }
 
@@ -39,168 +39,69 @@ include('./views/includes/alerts.php')
         include './views/includes/navbar.php';
         ?>
 
-        <style>
-            @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-        </style>
-        <div class="min-w-screen min-h-screen flex items-center p-5 lg:p-10 overflow-hidden relative">
-            <div class="w-full max-w-6xl rounded bg-white first:shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
-                <div class="md:flex items-center -mx-10">
-                    <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
-                        <div class="relative">
-                            <img src="./public/uploads/<?php echo $product->product_image; ?>" class="w-full relative z-10" alt="">
-                            <div class="border-4 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-1/2 px-10 font-proza">
-                        <div class="mb-10">
+        <!-- component -->
+        <section class="font-proza text-[#080808] body-font overflow-hidden my-24 ">
+            <div class="container px-5 py-24 mx-auto bg-white rounded">
+                <div class="md:w-4/5 lg:w-full justify-center mx-auto flex flex-wrap">
+                    <img alt="ecommerce" class="w-60 h-52" src="./public/uploads/<?php echo $product->product_image; ?>">
+                    <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><?php echo $product->product_title; ?></h1>
 
-                            <h1 class="font-bold uppercase text-2xl mb-5 text-black"> <?php echo $product->product_title; ?> </h1>
-                            <p class="text-sm text-black"> <?php echo $product->product_description; ?></p>
-                        </div>
-                        <div>
-                            <div class="inline-block align-bottom mr-5">
-                                <span class="text-2xl leading-none align-baseline text-black "> Starts At $</span>
-                                <span class="font-bold text-5xl leading-none align-baseline text-black"> 10 </span>
-                            </div>
-                            <div class="inline-block align-bottom">
+                        <p class="leading-relaxed"><?php echo $product->product_description; ?></p>
+                        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
 
+                            <div class="flex ml-6 items-center">
+                                <span class="mr-3">Price</span>
+                                <div class="relative">
 
-                                <form method="POST" action="<?php echo BASE_URL; ?>checkout">
-                                    <div class="form-group">
-                                        <input type="number" name="product_qte" id="product_qte" class="text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-white" value="1" min="1">
-                                        <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
-                                        <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
-                                        <input type="hidden" name="selectedPrice" id="price" value="">
-                                        <button class="bg-red-600 text-white rounded-full text-center duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
-
-                                    </div>
-
-
-                                    <select name="price_id" id="product_price" class="text-black border-2" required>
+                                    <select name="price_id" id="product_price" required class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
                                         <option class="text-black" value="">Choose price</option>'
+
                                         <?php
                                         foreach ($value as $values) {
                                             echo '<option class="text-black" value="' . $values->price_id . '">' . $values->price . ' </option>';
                                         }
                                         ?>
                                     </select>
-                                </form>
-                                <form method="POST">
-                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
-                                    <button name="submit" class="btn heart"><i class="fas fa-heart"></i></button>
-                                </form>
+                                    <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
+                        </div>
+                        <div class="flex">
+                            <form method="POST" action="<?php echo BASE_URL; ?>checkout">
+
+                                <span class="title-font font-medium text-2xl text-gray-900">Starts At 10 $</span>
+                                <input type="number" name="product_qte" id="product_qte" class="mx-1 text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-[F4F5E2]" value="1" min="1">
+                                <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
+                                <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+                                <input type="hidden" name="selectedPrice" id="price" value="">
+                                <button class="flex xsm:w-full justify-center my-4 bg-red-600 text-[#F4F5E2] rounded-full duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
+                            </form>
+                            <form method="POST">
+                                <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+                                <button name="submit" class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-       
-
-
-            <body class="antialiased">
-
-
-                
-
-                <div class="py-6">
-                  
-
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-                        <div class="flex flex-col md:flex-row -mx-4">
-                            <div class="md:flex-1 px-4">
-                                <div x-data="{ image: 1 }" x-cloak>
-                                    <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-                                        <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl"><img src="./public/uploads/<?php echo $product->product_image; ?>"></span>
-                                        </div>
-
-                                      
-                                    </div>
-
-                                    <!-- <div class="flex -mx-2 mb-4">
-                                        <template x-for="i in 4">
-                                            <div class="flex-1 px-2">
-                                                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                                                    <span x-text="i" class="text-2xl"></span>
-                                                </button>
-                                            </div>
-                                        </template>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <div class="md:flex-1 px-4">
-                                <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><?php echo $product->product_title; ?> </h2>
-                                <p class="text-gray-500 text-sm">By <a href="#" class="text-indigo-600 hover:underline">ABC Company</a></p>
-
-                                <div class="flex items-center space-x-4 my-4">
-                                    <div>
-                                        <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                                            <span class="text-indigo-400 mr-1 mt-1">$</span>
-                                            <span class="font-bold text-indigo-600 text-3xl">25</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-green-500 text-xl font-semibold">Save 12%</p>
-                                        <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
-                                    </div>
-                                </div>
-
-                                <p class="text-gray-500"><?php echo $product->product_description; ?></p>
-
-                                <div class="flex py-4 space-x-4">
-                                    <div class="relative">
-                                        <div class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">Qty</div>
-                                        <select class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-
-                                        <svg class="w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                                        </svg>
-                                    </div>
-
-                                    <button type="button" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
-                                        Add to Cart
-                                    </button>
-
-                                    <select name="price_id" id="product_price" class="text-black border-2" required>
-                                        <option class="text-black" value="">Choose price</option>'
-                                        <?php
-                                        foreach ($value as $values) {
-                                            echo '<option class="text-black" value="' . $values->price_id . '">' . $values->price . ' </option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </body>
-            <!-- partial -->
-            <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js'></script>
-
-            </html>
-
-        </div>
+        </section>
     </section>
+
     <!-- footer -->
-    <div class="mt-10">
-        <?php
-        include './views/includes/footer.php';
-        ?>
-    </div>
+    <?php
+    include './views/includes/footer.php';
+    ?>
+    
     <!-- end footer -->
-    </section>
-
     <script>
         const product_qte = document.getElementById('product_qte'); // get the input
         const product_price = document.getElementById('product_price');

@@ -7,6 +7,9 @@ module.exports = {
         'proza': 'Proza Libre',
       },
       screens: {
+        'xsm': '414px',
+        // => @media (min-width: 640px) { ... }
+
         'sm': '640px',
         // => @media (min-width: 640px) { ... }
   

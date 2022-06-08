@@ -22,7 +22,7 @@
     include './views/includes/navbar.php';
     ?>
 
-    <body class="bg-slate-100 ">
+    <body class="bg-[#FBF8F3]  ">
         <div class="flex justify-center py-16 font-ink text-5xl font-bold text-[#080808] ">Shopping Cart</div>
 
         <!-- component -->
@@ -34,7 +34,7 @@
                         <thead>
                             <tr class="h-12 uppercase">
                                 <div class="pt-5">
-                                    <h6 class="mb-0"><a href="<?php echo BASE_URL; ?>productslist" class="text-body font-proza text-3xl"><i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                    <h6 class="mb-0"><a href="<?php echo BASE_URL; ?>productslist" class="text-body font-proza text-3xl"><i class="fas fa-long-arrow-alt-left mx-2"></i>Back to shop</a></h6>
                                 </div>
                                 <!-- <th class="hidden md:table-cell"></th> -->
                                 <th class="text-left text-[#080808]">Product</th>

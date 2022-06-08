@@ -7,9 +7,11 @@ $orders = $data->getUserOrders();
 <style>
     .mainabout {
         --tw-bg-opacity: 1;
+        --tw-bg-opacity: 1;
         background-color: rgb(251 248 243 / var(--tw-bg-opacity));
-        padding: 1vw 2vw 0 2vw;
     }
+
+
 
     li {
         color: #080808;
@@ -25,9 +27,6 @@ $orders = $data->getUserOrders();
             <thead class="text-base text-[#080808] uppercase">
 
                 <tr class="border-b border-black ">
-                    <th scope="col" class="px-6 py-3">
-                        Name
-                    </th>
                     <th scope="col" class="px-6 py-3">
                         Product Brand
                     </th>
@@ -51,22 +50,19 @@ $orders = $data->getUserOrders();
                 <?php foreach ($orders as $order) : ?>
                     <tr class="border-b border-black  rounded ">
                         <th scope="row" class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
-                            <?= $order->fullname ?>
+                            <?= $order->product ?>
                         </th>
-                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808]">
-                        <?= $order->product ?>
+                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                            <?= $order->qte ?>
                         </td>
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
-                        <?= $order->qte ?>
+                            <?= $order->price ?>
                         </td>
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
-                        <?= $order->price ?>
+                            <?= $order->total ?>
                         </td>
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
-                        <?= $order->total ?>
-                        </td>
-                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
-                        <?= $order->code ?>
+                            <?= $order->code ?>
                         </td>
 
                     </tr>
