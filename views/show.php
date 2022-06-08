@@ -53,6 +53,7 @@ include('./views/includes/alerts.php')
                             <div class="flex ml-6 items-center">
                                 <span class="mr-3">Price</span>
                                 <div class="relative">
+                                <form method="POST" action="<?php echo BASE_URL; ?>checkout">
 
                                     <select name="price_id" id="product_price" required class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
                                         <option class="text-black" value="">Choose price</option>'
@@ -71,15 +72,15 @@ include('./views/includes/alerts.php')
                                 </div>
                             </div>
                         </div>
-                        <div class="flex">
-                            <form method="POST" action="<?php echo BASE_URL; ?>checkout">
+                        <div class="flex flex-col">
+                            <!-- <form method="POST" action="<?php echo BASE_URL; ?>checkout"> -->
 
                                 <span class="title-font font-medium text-2xl text-gray-900">Starts At 10 $</span>
-                                <input type="number" name="product_qte" id="product_qte" class="mx-1 text-black border-2 border-black rounded-lg pt-1 shadow-lg bg-[F4F5E2]" value="1" min="1">
+                                <input type="number" name="product_qte" id="product_qte" class="mx-1 text-black border-2 w-60  border-black rounded-lg pt-1 shadow-lg bg-[F4F5E2]" value="1" min="1">
                                 <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
                                 <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                 <input type="hidden" name="selectedPrice" id="price" value="">
-                                <button class="flex xsm:w-full justify-center my-4 bg-red-600 text-[#F4F5E2] rounded-full duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
+                                <button class="flex  w-60 justify-center my-4 bg-red-600 text-[#F4F5E2] rounded-full duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
                             </form>
                             <form method="POST">
                                 <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
