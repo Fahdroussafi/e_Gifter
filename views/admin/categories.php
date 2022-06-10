@@ -1,13 +1,6 @@
 <?php
-$products = new ProductsController();
-$products = $products->getAllProducts();
-if (isset($_POST["submit"])) {
-    $product = new AdminController();
-    $product->newPrice();
-}
-// echo '<pre>';
-// print_r($products);
-// '</pre>';
+$categories = new CategoriesController();
+$categories = $categories->getAllCategories();
 ?>
 <html lang="en">
 
@@ -16,10 +9,12 @@ if (isset($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <title>Add to stock</title>
+    <script src="./public/js/main.js"></script>
+    <title>Categories</title>
 </head>
 
-<body>
+<body class="font-proza">
+
     <!-- component -->
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -57,7 +52,7 @@ if (isset($_POST["submit"])) {
                         <span class="mx-3">Products</span>
                     </a>
 
-                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>categories">
+                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>categories">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
                             </path>
@@ -76,7 +71,7 @@ if (isset($_POST["submit"])) {
                         </svg> -->
                         <span class="mx-3">Clients</span>
                     </a>
-                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>addprices">
+                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>addprices">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                         <span class="mx-3">Add to stock</span>
                     </a>
@@ -110,45 +105,77 @@ if (isset($_POST["submit"])) {
                     </div>
                 </header>
 
+                <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                    <div class="container mx-auto px-6 py-8">
+                        <!-- <h3 class="text-[#080808] text-3xl font-medium">Products</h3> -->
+                        <?php
+                        include('./views/includes/alerts.php')
+                        ?>
 
+                        <div class="my-2">
+                            <a href="<?php echo BASE_URL ?>addCategory" class="btn btn-primary">
+                                Add Category
+                            </a>
+                        </div>
 
-                <!-- add to stock form -->
-                <div class="flex items-center justify-center p-12">
-                    <div class="mx-auto w-full max-w-[550px]">
-                        <form method="POST" enctype="multipart/form-data">
-
-                            <div class="mb-5">
-                                <label for="price" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Price
-                                </label>
-                                <input type="number" name="price" placeholder="Price" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                            </div>
-                            <div class="mb-5">
-                                <label for="Quantity" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Quantity
-                                </label>
-                                <input type="number" name="quantity" placeholder="Quantity" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                            </div>
-                            <div class="mb-5">
-                                <label for="Category" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Category
-                                </label>
-                                    <select class="select w-full max-w-xs bg-white" name="product_id" id="">
-                                        <?php foreach ($products as $product) : ?>
-                                            <option value="<?php echo $product["product_id"] ?>">
-                                                <?php echo $product["product_title"] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                            </div>
-                            <div>
-                                <button name="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
-                                    Add
-                                </button>
-                            </div>
+                        <form id="update" action="<?php echo BASE_URL ?>updateCategory" method="POST">
+                            <input type="hidden" name="cat_id" id="update_category_id">
                         </form>
+                        <form id="delete_form_cat" action="<?php echo BASE_URL ?>deleteCategory" method="POST">
+                            <input type="hidden" name="delete_cat_id" id="delete_cat_id">
+                        </form>
+
+
+                        <div class="flex flex-col mt-8">
+                            <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                                <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+
+                                    <table class="min-w-full">
+
+                                        <thead>
+                                            <tr>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
+                                                    Category Name</th>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
+                                                    Number of Products</th>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
+                                                    Action</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        foreach ($categories as $category) :
+                                        ?>
+
+                                            <tbody class="bg-white">
+                                                <tr>
+                                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                        <div class="text-sm leading-5 text-gray-900"><?php echo $category["cat_title"]; ?></div>
+                                                    </td>
+
+                                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                        <div class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-[#080808]"><?php
+                                                                                                                                    $productByCat = new ProductsController();
+                                                                                                                                    $productByCat = $productByCat->getProductsByCategory($category['cat_id']);
+                                                                                                                                    echo count($productByCat);
+                                                                                                                                    ?>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-[#080808]">
+                                                        <a onclick="submitFormCat(<?php echo $category['cat_id']; ?>)" class="btn btn-warning btn-sm mr-2">
+                                                            Update
+                                                        </a>
+                                                        <a onclick="deleteFormCat(<?php echo $category['cat_id']; ?>)" class="btn btn-error btn-sm">
+                                                            Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        <?php endforeach; ?>
+
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </main>

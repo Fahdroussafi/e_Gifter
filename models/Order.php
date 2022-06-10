@@ -1,6 +1,6 @@
 <?php
-
 class Order
+
 {
     static public function getAll()
     {
@@ -14,7 +14,7 @@ class Order
     static public function createOrder($data)
     {
 
-        $code = self::selectCodes($data["price_id"]);   // get the code of the price selected  by the user  (price_id)
+        $code = self::selectCodes($data["price_id"]);
 
         $stmt = DB::connect()->prepare('INSERT INTO orders (fullname,product,qte,price,total,code_id,user_id) VALUES (:fullname,:product,:qte,:price,:total,:code,:user_id)');
         $stmt->bindParam(':fullname', $data['fullname']);
@@ -22,33 +22,51 @@ class Order
         $stmt->bindParam(':qte', $data['qte']);
         $stmt->bindParam(':price', $data['price']);
         $stmt->bindParam(':total', $data['total']);
-        $stmt->bindParam(':code', $code);
+        $stmt->bindParam(':code', $code); // $code is the random code generated
         $stmt->bindParam(':user_id', $_SESSION['user_id']);
-        if ($stmt->execute()) {
-            $stmt = DB::connect()->prepare('UPDATE prices SET quantity = quantity - :quantity WHERE price_id = :price_id');
-            $stmt->bindParam(':quantity', $data['qte']);
-            $stmt->bindParam(':price_id', $data['price_id']);
-            $stmt->execute();
-            return 'ok';
-        } else {
-            return 'error';
-        }
+        $stmt->execute();
+        // if ($stmt->execute()) {
+        $stmt = DB::connect()->prepare('UPDATE prices SET quantity = quantity - :quantity WHERE price_id = :price_id');
+        $stmt->bindParam(':quantity', $data['qte']);
+        $stmt->bindParam(':price_id', $data['price_id']);
+        $stmt->execute();
+        return 'ok';
+        // } else {
+        //     return 'error';
+        // }
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
     }
+
+
 
     static public function selectCodes($price_id)
     {
-        $stmt = DB::connect()->prepare('SELECT code, code_id FROM codes WHERE price_id = :price_id AND `status` = 0 LIMIT 1');
+        function gen_uid($l = 15)
+        {
+            return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
+        }
+        // $code = rand(100000, 999999);
+        $code = gen_uid(6);
+        $stmt = DB::connect()->prepare('SELECT code, code_id FROM codes WHERE price_id = :price_id');
+        // $stmt->bindParam(':code', $code);
         $stmt->bindParam(':price_id', $price_id);
         $stmt->execute();
-
-        $code = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
-
-        $stmt = DB::connect()->prepare("UPDATE `codes` SET `status` = '1' WHERE `codes`.`code_id` = :code");
-        $stmt->bindParam(':code', $code->code_id);
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
+        var_dump($result);
+        // die();
+        // if ($result) {
+        //     self::selectCodes($price_id);
+        // } else {
+        $stmt = DB::connect()->prepare('INSERT INTO codes (code,price_id) VALUES (:code,:price_id)');
+        $stmt->bindParam(':code', $code);
+        $stmt->bindParam(':price_id', $price_id);
         $stmt->execute();
-
-        return $code->code_id;
+        return $code;
     }
+
+
 
     //create a function that get user order joinded with codes
     static public function getUserOrders($user_id)
@@ -57,5 +75,13 @@ class Order
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    static public function displayOrders() {
+        $stmt = DB::connect()->prepare('SELECT * FROM orders ORDER BY done_at DESC');
+        $stmt->execute();
+        $orders = $stmt->fetchAll();
+        return $orders;
+        $stmt = null;
     }
 }

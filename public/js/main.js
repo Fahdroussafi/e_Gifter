@@ -18,3 +18,17 @@ function deleteForm($id) {
   input.value = $id;
   form.submit();
 }
+
+function deleteFormCat($id) {
+  const input = document.querySelector("#delete_cat_id");
+  const form = document.querySelector("#delete_form_cat");
+  input.value = $id;
+  form.submit();
+}
+
+function submitFormCat ($id){
+  const input = document.querySelector("#update_category_id");
+  const form = document.querySelector("#update");
+  input.value = $id;
+  form.submit();
+}

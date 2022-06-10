@@ -3,7 +3,7 @@
   $prices = $data->getPricesValue();
 
   if(isset($_POST["submit"])){
-      $code = new ProductsController();
+      $code = new AdminController();
       $code->newCode();
   }
 

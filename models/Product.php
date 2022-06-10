@@ -37,7 +37,6 @@ class Product
         $id = $data['id'];
         try {
             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_id = :id');
-            // $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_id = :id');
             $stmt->execute(array(":id" => $id));
             $product = $stmt->fetch(PDO::FETCH_OBJ);
             return $product;
@@ -62,13 +61,13 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
-    static public function getPrices(){
-            // get price id from codes table 
-            $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id= products.product_id;");
-            $stmt->execute();
-            $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
-            return $prices;
-
+    static public function getPrices()
+    {
+        // get price id from codes table 
+        $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id= products.product_id;");
+        $stmt->execute();
+        $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $prices;
     }
 
     static public function addProduct($data)
@@ -88,7 +87,7 @@ class Product
         // $stmt->close();
         $stmt = null;
     }
-    
+
     static public function addPrices($data)
     {
         $stmt = DB::connect()->prepare('INSERT INTO prices (product_id,price,quantity)
@@ -104,7 +103,7 @@ class Product
         // $stmt->close();
         $stmt = null;
     }
-   
+
     static public function editProduct($data)
     {
         $stmt = DB::connect()->prepare('UPDATE products SET 
@@ -148,7 +147,7 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
-
+    // calculate the revenue
     static public function getTotalPrice()
     {
         $stmt = DB::connect()->prepare('SELECT SUM(total) AS total FROM orders');
@@ -157,4 +156,14 @@ class Product
         return $total;
         $stmt = null;
     }
+    // calculate the numbers of products that have been sold
+    static public function getTotalQuantity()
+    {
+        $stmt = DB::connect()->prepare('SELECT SUM(qte) AS total FROM orders');
+        $stmt->execute();
+        $total = $stmt->fetch(PDO::FETCH_OBJ);
+        return $total;
+        $stmt = null;
+    }
+    
 }

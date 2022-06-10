@@ -105,3 +105,4 @@ class UsersController
         session_destroy();
     }
 }
+

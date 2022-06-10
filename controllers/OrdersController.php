@@ -10,6 +10,8 @@ class OrdersController
     public function addOrder($data)
     {
         $result = Order::createOrder($data);
+        // var_dump($result);
+        // die();
         if ($result === "ok") {
             foreach ($_SESSION as $name => $product) {
                 if (substr($name, 0, 9) == "products_") {

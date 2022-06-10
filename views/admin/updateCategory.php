@@ -1,13 +1,20 @@
 <?php
-$products = new ProductsController();
-$products = $products->getAllProducts();
-if (isset($_POST["submit"])) {
-    $product = new AdminController();
-    $product->newPrice();
+if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
+
+    $categoryToUpdate = new CategoriesController();
+    $categoryToUpdate = $categoryToUpdate->getCategory();
+
+    if (isset($_POST["update_cat"])) {
+        $category = new AdminController();
+        $category->updateCategory();
+    }
+    // echo '<pre>';
+    // var_dump($_POST);
+    // '</pre>';
+    // die();
+} else {
+    Redirect::to("dashboard");
 }
-// echo '<pre>';
-// print_r($products);
-// '</pre>';
 ?>
 <html lang="en">
 
@@ -16,10 +23,10 @@ if (isset($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <title>Add to stock</title>
+    <title>Categories</title>
 </head>
 
-<body>
+<body class="font-proza">
     <!-- component -->
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -57,7 +64,7 @@ if (isset($_POST["submit"])) {
                         <span class="mx-3">Products</span>
                     </a>
 
-                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>categories">
+                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>categories">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
                             </path>
@@ -70,13 +77,9 @@ if (isset($_POST["submit"])) {
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                         </svg>
-                        <!-- <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                            </path>
-                        </svg> -->
                         <span class="mx-3">Clients</span>
                     </a>
-                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>addprices">
+                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>addprices">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                         <span class="mx-3">Add to stock</span>
                     </a>
@@ -110,45 +113,24 @@ if (isset($_POST["submit"])) {
                     </div>
                 </header>
 
-
-
-                <!-- add to stock form -->
+                <!-- update category form -->
                 <div class="flex items-center justify-center p-12">
                     <div class="mx-auto w-full max-w-[550px]">
                         <form method="POST" enctype="multipart/form-data">
-
                             <div class="mb-5">
-                                <label for="price" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Price
+                                <label for="Category Name" class="mb-3 block text-base font-medium text-[#07074D]">
+                                    Category Name
                                 </label>
-                                <input type="number" name="price" placeholder="Price" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                <input type="hidden" name="cat_id" value="<?php echo $categoryToUpdate->cat_id; ?>">
+                                <input type="text" name="cat_title" value="<?php echo $categoryToUpdate->cat_title; ?>" placeholder="Category Name" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
-                            <div class="mb-5">
-                                <label for="Quantity" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Quantity
-                                </label>
-                                <input type="number" name="quantity" placeholder="Quantity" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                            </div>
-                            <div class="mb-5">
-                                <label for="Category" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Category
-                                </label>
-                                    <select class="select w-full max-w-xs bg-white" name="product_id" id="">
-                                        <?php foreach ($products as $product) : ?>
-                                            <option value="<?php echo $product["product_id"] ?>">
-                                                <?php echo $product["product_title"] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                            </div>
-                            <div>
-                                <button name="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
-                                    Add
-                                </button>
-                            </div>
-                        </form>
+                            <button name="update_cat" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
+                                Update
+                            </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>

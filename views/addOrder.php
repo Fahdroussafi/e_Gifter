@@ -9,11 +9,16 @@ foreach ($_SESSION as $name => $product) {
             "qte" => $product["qte"],
             "price" => $product["selectedPrice"],
             "price_id" => $product["price_id"],
+            // "user_id" => $_SESSION["user_id"],
             "total" => $product["total"]
+            
         );
 
         $order->addOrder($data);
     } else {
-        Redirect::to("cart");
+        // Redirect::to("cart");
+        // echo '<pre>';
+        // print_r($_SESSION);
+        // echo '</pre>';
     }
 }
