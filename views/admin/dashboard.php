@@ -192,7 +192,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
                                                     Quantity</th>
                                                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
-                                                    Total</th>
+                                                    Price</th>
                                                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
                                                     Order Date</th>
                                                 <!-- <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-[#080808] uppercase tracking-wider">
@@ -229,7 +229,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                                     </td>
 
                                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                        <span class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-[#080808]"><?php echo $order_list["total"] ?>$</span>
+                                                        <span class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-[#080808]"><?php echo $order_list["price"] ?>$</span>
                                                     </td>
 
                                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-[#080808]">

@@ -15,6 +15,10 @@ class Order
     {
 
         $code = self::selectCodes($data["price_id"]);
+        // echo '<pre>';
+        // var_dump($code);
+        // echo '</pre>';
+        // die();
 
         $stmt = DB::connect()->prepare('INSERT INTO orders (fullname,product,qte,price,total,code_id,user_id) VALUES (:fullname,:product,:qte,:price,:total,:code,:user_id)');
         $stmt->bindParam(':fullname', $data['fullname']);
@@ -43,18 +47,13 @@ class Order
 
     static public function selectCodes($price_id)
     {
-        function gen_uid($l = 15)
-        {
-            return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
-        }
         // $code = rand(100000, 999999);
-        $code = gen_uid(6);
-        $stmt = DB::connect()->prepare('SELECT code, code_id FROM codes WHERE price_id = :price_id');
-        // $stmt->bindParam(':code', $code);
-        $stmt->bindParam(':price_id', $price_id);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
-        var_dump($result);
+        $code = self::gen_uid(6);
+        // $stmt = DB::connect()->prepare('SELECT code, code_id FROM codes WHERE price_id = :price_id');
+        // // $stmt->bindParam(':code', $code);
+        // $stmt->bindParam(':price_id', $price_id);
+        // $stmt->execute();
+        // $result = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
         // die();
         // if ($result) {
         //     self::selectCodes($price_id);
@@ -63,7 +62,17 @@ class Order
         $stmt->bindParam(':code', $code);
         $stmt->bindParam(':price_id', $price_id);
         $stmt->execute();
-        return $code;
+        $stmt = DB::connect()->prepare('SELECT code_id FROM codes WHERE code = :code');
+        // $stmt->bindParam(':code', $code);
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
+        return $result->code_id;
+    }
+
+    static public function gen_uid($l = 15)
+    {
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
     }
 
 

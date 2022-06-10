@@ -19,6 +19,9 @@ $orders = $data->getUserOrders();
     <?php
     include './views/includes/navbar.php';
     ?>
+     <?php
+    include './views/includes/alerts.php';
+    ?>
     <div class="flex justify-center py-16 font-ink text-5xl font-bold text-[#080808]">My Orders</div>
     <div class="relative overflow-x-auto sm:rounded-lg min-h-screen py-20">
         <table class="w-full text-base text-left text-[#080808]">
@@ -37,9 +40,9 @@ $orders = $data->getUserOrders();
                     <th scope="col" class="px-6 py-3">
                         Price
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <!-- <th scope="col" class="px-6 py-3">
                         Total
-                    </th>
+                    </th> -->
                     <th scope="col" class="px-6 py-3">
                         Product Code
                     </th>
@@ -62,9 +65,9 @@ $orders = $data->getUserOrders();
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?= $order->price ?>
                         </td>
-                        <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
+                        <!-- <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?= $order->total ?>
-                        </td>
+                        </td> -->
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?= $order->code ?>
                         </td>

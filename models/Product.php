@@ -150,7 +150,7 @@ class Product
     // calculate the revenue
     static public function getTotalPrice()
     {
-        $stmt = DB::connect()->prepare('SELECT SUM(total) AS total FROM orders');
+        $stmt = DB::connect()->prepare('SELECT SUM(price) AS total FROM orders');
         $stmt->execute();
         $total = $stmt->fetch(PDO::FETCH_OBJ);
         return $total;

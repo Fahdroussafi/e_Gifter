@@ -12,7 +12,7 @@ class User
             $user = $stmt->fetch(PDO::FETCH_OBJ);
             return $user;
         } catch (PDOException $ex) {
-            echo "error : " . $ex . getMessage();
+            echo $ex->getMessage();
         }
     }
 

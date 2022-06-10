@@ -2,23 +2,30 @@
 $order = new OrdersController();
 
 foreach ($_SESSION as $name => $product) {
-    if (substr($name, 0, 9) == "products_") {
+    
+    if (str_starts_with($name,"products_")) {
+    //     echo '<pre>';
+    // var_dump($name);
+    // echo '</pre>';
+    // die();
+
+    for ($i=0; $i < $product["qte"]; $i++) { 
         $data = array(
             "fullname" => $_SESSION["fullname"],
             "product" => $product["title"],
-            "qte" => $product["qte"],
+            "qte" => 1,
             "price" => $product["selectedPrice"],
             "price_id" => $product["price_id"],
             // "user_id" => $_SESSION["user_id"],
-            "total" => $product["total"]
+            "total" => $product["total"],
+            "name" => $name
             
         );
 
         $order->addOrder($data);
-    } else {
-        // Redirect::to("cart");
-        // echo '<pre>';
-        // print_r($_SESSION);
-        // echo '</pre>';
     }
+        
+    } 
 }
+Session::set("success", "order went successfully");
+Redirect::to("userorders");
