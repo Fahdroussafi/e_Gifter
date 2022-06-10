@@ -13,6 +13,12 @@ class AdminController
         $total = User::getAllClients();
         return $total;
     }
+    public function ShowUsers()
+    {
+        // controller to get the total number of clients
+        $total = User::ShowUsers();
+        return $total;
+    }
     public function newProduct()
     {
         if (isset($_POST["submit"])) {

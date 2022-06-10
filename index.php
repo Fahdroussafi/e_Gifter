@@ -9,7 +9,8 @@ $pages = [
     'addProduct', 'emptycart', 'show', 'cancelcart', 'register',
     'login', 'checkout', 'logout', 'productslist', 'orders', 'addOrder', 'about',
     'products', 'like', 'unlike', 'wishlist', 'contact',
-    'likes','categories','addtostock','myprofile','userorders','nav','addCategory','deleteCategory','updateCategory'
+    'likes','categories','addtostock','myprofile','userorders','nav',
+    'addCategory','deleteCategory','updateCategory','clients'
 ];
 
 if (isset($_GET['page'])) {
@@ -19,7 +20,7 @@ if (isset($_GET['page'])) {
             $page === "dashboard" || $page === "deleteProduct"
             || $page === "addProduct"  || $page === "updateProduct" || $page === "products" ||
             $page === "orders" || $page === "categories" || $page === "addtostock" || $page === "addCategory"
-            || $page === "deleteCategory" || $page === "updateCategory"
+            || $page === "deleteCategory" || $page === "updateCategory" || $page === "clients"
         ) {
             if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                 $admin = new AdminController();

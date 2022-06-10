@@ -1,8 +1,5 @@
 <?php
 
-// var_dump($clients);
-// die();
-
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
     $data = new ProductsController();
     $products = $data->getAllProducts();

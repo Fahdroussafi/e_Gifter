@@ -1,6 +1,8 @@
 <?php
-$categories = new CategoriesController();
-$categories = $categories->getAllCategories();
+ $clients = new AdminController();
+ $clients = $clients->ShowUsers();
+// var_dump($clients);
+
 ?>
 <html lang="en">
 
@@ -9,12 +11,10 @@ $categories = $categories->getAllCategories();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <script src="./public/js/main.js"></script>
-    <title>Categories</title>
+    <title>Clients</title>
 </head>
 
 <body class="font-proza">
-
     <!-- component -->
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -29,7 +29,7 @@ $categories = $categories->getAllCategories();
                             <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" />
                         </svg>
 
-                        <span class="text-white text-2xl mx-2 font-semibold">Categories</span>
+                        <span class="text-white text-2xl mx-2 font-semibold">Clients</span>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@ $categories = $categories->getAllCategories();
                         <span class="mx-3">Products</span>
                     </a>
 
-                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>categories">
+                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>categories">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
                             </path>
@@ -61,14 +61,11 @@ $categories = $categories->getAllCategories();
                         <span class="mx-3">Categories</span>
                     </a>
 
-                    <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>clients">
+                    <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-200 hover:text-amber-100" href="<?php echo BASE_URL; ?>clients">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                         </svg>
-                        <!-- <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                            </path>
-                        </svg> -->
+
                         <span class="mx-3">Clients</span>
                     </a>
                     <a class="flex items-center mt-4 py-2 px-6 text-gray-300 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="<?php echo BASE_URL; ?>addprices">
@@ -105,26 +102,15 @@ $categories = $categories->getAllCategories();
                     </div>
                 </header>
 
+
+
                 <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div class="container mx-auto px-6 py-8">
-                        <!-- <h3 class="text-[#080808] text-3xl font-medium">Products</h3> -->
-                        <?php
-                        include('./views/includes/alerts.php')
-                        ?>
 
-                        <div class="my-2">
-                            <a href="<?php echo BASE_URL ?>addCategory" class="btn btn-primary">
-                                Add Category
-                            </a>
+
+                        <div class="mt-8">
+
                         </div>
-
-                        <form id="update" action="<?php echo BASE_URL ?>updateCategory" method="POST">
-                            <input type="hidden" name="cat_id" id="update_category_id">
-                        </form>
-                        <form id="delete_form_cat" action="<?php echo BASE_URL ?>deleteCategory" method="POST">
-                            <input type="hidden" name="delete_cat_id" id="delete_cat_id">
-                        </form>
-
 
                         <div class="flex flex-col mt-8">
                             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -134,39 +120,39 @@ $categories = $categories->getAllCategories();
 
                                         <thead>
                                             <tr>
-                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
-                                                    Category Name</th>
-                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
-                                                    Number of Products</th>
-                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808]  uppercase tracking-wider">
-                                                    Action</th>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
+                                                    Full Name</th>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
+                                                    Username</th>
+                                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-base leading-4 font-medium text-[#080808] font-proza uppercase tracking-wider">
+                                                    Email</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        foreach ($categories as $category) :
+                                        foreach ($clients as $client) :
                                         ?>
 
                                             <tbody class="bg-white">
                                                 <tr>
+
                                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                        <div class="text-sm leading-5 text-gray-900"><?php echo $category["cat_title"]; ?></div>
+                                                        <div class="flex items-center">
+                                                            <div class="flex-shrink-0 h-10 w-10">
+                                                                <img class="h-10 w-10 rounded-full" src="./public/img/user2.png" alt="user image">
+                                                            </div>
+
+                                                            <div class="ml-4">
+                                                                <div class="text-sm leading-5 font-medium text-gray-900"><?php echo $client["fullname"] ?>
+                                                                </div>
+                                                            </div>
                                                     </td>
 
                                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                        <div class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-[#080808]"><?php
-                                                                                                                                    $productByCat = new ProductsController();
-                                                                                                                                    $productByCat = $productByCat->getProductsByCategory($category['cat_id']);
-                                                                                                                                    echo count($productByCat);
-                                                                                                                                    ?>
-                                                        </div>
+                                                        <div class="text-sm leading-5 text-gray-900"><?php echo $client["username"] ?></div>
                                                     </td>
-                                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-[#080808]">
-                                                        <a onclick="submitFormCat(<?php echo $category['cat_id']; ?>)" class="btn btn-warning btn-sm mr-2">
-                                                            Update
-                                                        </a>
-                                                        <a onclick="deleteFormCat(<?php echo $category['cat_id']; ?>)" class="btn btn-error btn-sm">
-                                                            Delete
-                                                        </a>
+
+                                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                        <span class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-[#080808]"><?php echo $client["email"] ?></span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -179,3 +165,9 @@ $categories = $categories->getAllCategories();
                         </div>
                     </div>
                 </main>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

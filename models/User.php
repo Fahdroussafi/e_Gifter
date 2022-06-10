@@ -53,13 +53,20 @@ class User
 
     static public function getAllClients()
     {
-
-           // function that counts all the clients in the database 
+        // function that counts all the clients in the database 
         $query = "SELECT * FROM users WHERE admin = 0";
         $stmt = DB::connect()->prepare($query);
         $stmt->execute();
         $clients = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $clients;
-        
+    }
+    static public function ShowUsers()
+    {
+        // function that counts all the clients in the database 
+        $query = "SELECT * FROM users WHERE admin = 0";
+        $stmt = DB::connect()->prepare($query);
+        $stmt->execute();
+        $clients = $stmt->fetchAll();
+        return $clients;
     }
 }
