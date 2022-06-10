@@ -51,9 +51,15 @@ class AdminController
             $result = Product::addPrices($data);
             if ($result === "ok") {
                 Session::set("success", "Added to stock successfully");
-                Redirect::to("products");
+                Redirect::to("addprices");
             } else {
                 echo $result;
+                if ($result === "error") {
+                    Session::set("error", "Price already exists in the product");
+                    Redirect::to("addprices");
+                } else {
+                    echo $result;
+                }
             }
         }
     }
@@ -131,11 +137,16 @@ class AdminController
         $orders = Order::displayOrders();
         return $orders;
     }
+    public function getStock()
+    {
+        $stock = Product::displayQuantity();
+        return $stock;
+    }
     public function newCategory()
     {
         if (isset($_POST["submit"])) {
             $data = array(
-                "cat_title" => $_POST["cat_title"], 
+                "cat_title" => $_POST["cat_title"],
             );
             $result = Category::addCategory($data);
             if ($result === "ok") {
@@ -146,7 +157,8 @@ class AdminController
             }
         }
     }
-    public function removeCategory (){
+    public function removeCategory()
+    {
         if (isset($_POST["delete_cat_id"])) {
             $data = array(
                 "id" => $_POST["delete_cat_id"]

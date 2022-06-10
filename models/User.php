@@ -24,7 +24,6 @@ class User
         $stmt->bindParam(':fullname', $data['fullname']);
         $stmt->bindParam(':username', $data['username']);
         $stmt->bindParam(':email', $data['email']);
-        $stmt->bindParam(':password', $data['password']);
         if ($stmt->execute()) {
             return 'ok';
         } else {
@@ -47,7 +46,6 @@ class User
         } else {
             return 'error';
         }
-        // $stmt->close();
         $stmt = null;
     }
 

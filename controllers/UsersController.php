@@ -54,7 +54,7 @@ class UsersController
             "fullname" => $_POST["fullname"],
             "username" => $_POST["username"],
             "email" => $_POST["email"],
-            "user_id" => $_SESSION["user_id"],
+            "user_id" => $_SESSION["user_id"]
         );
         $result = User::update($data);
         if ($result === "ok") {

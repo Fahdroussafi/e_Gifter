@@ -90,18 +90,25 @@ class Product
 
     static public function addPrices($data)
     {
-        $stmt = DB::connect()->prepare('INSERT INTO prices (product_id,price,quantity)
-        VALUES (:product_id,:price,:quantity)');
-        $stmt->bindParam(':product_id', $data['product_id']);
-        $stmt->bindParam(':price', $data['price']);
-        $stmt->bindParam(':quantity', $data['quantity']);
-        if ($stmt->execute()) {
-            return 'ok';
-        } else {
+        $stmt = DB::connect()->prepare('SELECT price FROM prices WHERE product_id = :product_id and price = :price');
+        $stmt->execute(array(":product_id" => $data['product_id'], ":price" => $data['price']));
+        $count = $stmt->rowCount();
+        // echo $count;
+        // return;
+        if ($count > 0) {
             return 'error';
+        } else {
+            $stmt = DB::connect()->prepare('INSERT INTO prices (product_id,price,quantity)
+            VALUES (:product_id,:price,:quantity)');
+            $stmt->bindParam(':product_id', $data['product_id']);
+            $stmt->bindParam(':price', $data['price']);
+            $stmt->bindParam(':quantity', $data['quantity']);
+            if ($stmt->execute()) {
+                return 'ok';
+            } else {
+                return 'error';
+            }
         }
-        // $stmt->close();
-        $stmt = null;
     }
 
     static public function editProduct($data)
@@ -165,5 +172,14 @@ class Product
         return $total;
         $stmt = null;
     }
-    
+
+    // display the stock of the products
+    static public function displayQuantity()
+    {
+        $stmt = DB::connect()->prepare('SELECT SUM(quantity) as stock FROM prices');
+        $stmt->execute();
+        $total = $stmt->fetch(PDO::FETCH_OBJ);
+        return $total;
+        $stmt = null;
+    }
 }

@@ -10,9 +10,18 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
 
     $clients = new AdminController();
     $clients = $clients->getTotalClients();
+    
+    $stock = new AdminController();
+    $stock = $stock->getStock(); // get the stock of the products available in the store
+    // echo '<pre>';
+    // var_dump($stock);
+    // echo '</pre>';
+    // die();
 
     $orders = new AdminController();
     $orders_list = $orders->displayOrders();
+
+
 } else {
     Redirect::to("home");
 }
@@ -138,6 +147,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                         </div>
                                     </div>
                                 </div>
+                                
 
                                 <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
                                     <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
@@ -170,6 +180,22 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="w-full my-5 ">
+                                    <div class="flex items-center  justify-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                        <div class="p-3 rounded-full bg-pink-600 bg-opacity-75">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="white" class="bi bi-hourglass-split" viewBox="0 0 16 16">
+                                                <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="mx-5">
+                                            <h4 class="text-2xl font-semibold text-[#080808]"><?php echo $stock->stock ?></h4>
+                                            <div class="text-[#080808]">Stock</div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

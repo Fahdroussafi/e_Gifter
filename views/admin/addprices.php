@@ -6,8 +6,9 @@ if (isset($_POST["submit"])) {
     $product->newPrice();
 }
 // echo '<pre>';
-// print_r($products);
+// print_r($POST);
 // '</pre>';
+// die();
 ?>
 <html lang="en">
 
@@ -20,6 +21,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+
     <!-- component -->
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -113,6 +115,9 @@ if (isset($_POST["submit"])) {
 
 
                 <!-- add to stock form -->
+                <?php
+                include('./views/includes/alerts.php')
+                ?>
                 <div class="flex items-center justify-center p-12">
                     <div class="mx-auto w-full max-w-[550px]">
                         <form method="POST" enctype="multipart/form-data">
@@ -133,13 +138,13 @@ if (isset($_POST["submit"])) {
                                 <label for="Category" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Category
                                 </label>
-                                    <select class="select w-full max-w-xs bg-white" name="product_id" id="">
-                                        <?php foreach ($products as $product) : ?>
-                                            <option value="<?php echo $product["product_id"] ?>">
-                                                <?php echo $product["product_title"] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                <select class="select w-full max-w-xs bg-white" name="product_id" id="">
+                                    <?php foreach ($products as $product) : ?>
+                                        <option value="<?php echo $product["product_id"] ?>">
+                                            <?php echo $product["product_title"] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div>
                                 <button name="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
