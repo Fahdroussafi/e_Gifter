@@ -115,8 +115,8 @@
                             </div>
                             <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0) : ?>
                                 <form method="post" action="<?php echo BASE_URL; ?>emptycart">
-                                    <button type="submit" class="bg-[#CC0000] text-[#FBF8F3] rounded-full w-full text-center h-10 pt-2 cursor-pointer font-bold font-proza duration-500">
-                                        Vider le panier
+                                    <button type="submit" class="bg-[#CC0000] text-[#FBF8F3] rounded-full w-full text-center h-10 pt-1 cursor-pointer font-bold font-proza duration-500">
+                                       Clear Cart
                                     </button>
                                 </form>
                             <?php endif; ?>
@@ -129,9 +129,9 @@
                                     <a href="<?php echo BASE_URL; ?>login" class="btn btn-link">Login to complete your orders</a>
                                 <?php endif; ?>
                                 <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder"></form>
-                                <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
+                                <!-- <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
                                 <button class="btn btn-primary">buy</button>
-                                </form>
+                                </form> -->
                             </div>
 
                         </div>
@@ -149,7 +149,7 @@ include './views/includes/footer.php';
 
 <script>
     let amount = document.querySelector('#amount').dataset.amount;
-    let finalAmount = Math.floor(amount / 9.86);
+    let finalAmount = Math.floor(amount);
     paypal.Buttons({
         createOrder: function(data, actions) {
             // This function sets up the details of the transaction, including the amount and line item details.

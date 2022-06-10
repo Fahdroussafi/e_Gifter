@@ -4138,6 +4138,10 @@ body[dir="rtl"] .checkbox:checked,
   padding-top: 0.25rem;
 }
 
+.pt-0 {
+  padding-top: 0px;
+}
+
 .text-left {
   text-align: left;
 }
