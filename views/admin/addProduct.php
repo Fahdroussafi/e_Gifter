@@ -2,9 +2,10 @@
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
     $categories = new CategoriesController();
     $categories = $categories->getAllCategories();
+
     if (isset($_POST["submit"])) {
-        $product = new AdminController();
-        $product->newProduct();
+        $product = new AdminController(); // instantiate the class
+        $product->newProduct(); // call the method newProduct() in the class AdminController
     }
 } else {
     Redirect::to("home");

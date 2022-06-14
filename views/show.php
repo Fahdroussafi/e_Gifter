@@ -83,7 +83,6 @@ include('./views/includes/alerts.php')
                                 <button class="flex  w-60 justify-center my-4 bg-red-600 text-[#F4F5E2] rounded-full duration-500 ease-in-out hover:scale-95 px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button>
                             </form>
                             <?php if (isset($_SESSION['logged'])) : ?>
-
                             <form method="POST">
                                 <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
                                 <button name="submit" class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
