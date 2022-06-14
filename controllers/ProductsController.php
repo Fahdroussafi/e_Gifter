@@ -4,7 +4,7 @@ class ProductsController
 {
     public function getAllProducts()
     {
-        $products = Product::getAll();
+        $products = Product::getAll(); 
         return $products;
     }
     public function getRandomProducts()

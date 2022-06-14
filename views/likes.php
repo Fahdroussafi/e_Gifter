@@ -34,7 +34,7 @@ if (isset($_POST["remove"])) {
             <thead class="text-base text-[#080808] uppercase">
 
                 <tr class="border-b border-black ">
-                    <th scope="col" class="px-6 py-3">git
+                    <th scope="col" class="px-6 py-3">
                         Product Brand
                     </th>
                     <th scope="col" class="px-6 py-3">

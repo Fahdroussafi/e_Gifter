@@ -118,13 +118,13 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
 
 
                 <!-- update product form -->
-                <div class="flex items-center justify-center p-12">
-                    <div class="mx-auto w-full max-w-[550px]">
+                <div class="flex items-center justify-center overflow-scroll">
+                    <div class="mx-auto w-full max-w-[550px] mb-20 mt-20">
                         <form method="POST" enctype="multipart/form-data">
-                            <div class="mb-5">
-                                <label for="Product Title" class="mb-3 block text-base font-medium text-[#07074D]">
+                            <div class="mb-5 mt-20">
+                                <label for="Product Title" class=" block text-base font-medium text-[#07074D]">
                                     Product Title
-                                </label>
+                                </label> 
                                 <input type="text" name="product_title" value="<?php echo $productToUpdate->product_title; ?>" placeholder="Product Title" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
                             <div class="mb-5">

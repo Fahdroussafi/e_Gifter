@@ -181,7 +181,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                     </div>
                                 </div>
 
-                                <div class="w-full my-5 ">
+                                <div class="w-full my-5 lg:my-5 ">
                                     <div class="flex items-center  justify-center px-5 py-6 shadow-sm rounded-md bg-white">
                                         <div class="p-3 rounded-full bg-pink-600 bg-opacity-75">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="white" class="bi bi-hourglass-split" viewBox="0 0 16 16">

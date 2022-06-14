@@ -6,7 +6,7 @@ class Product
     {
         $stmt = DB::connect()->prepare('SELECT * FROM products');
         $stmt->execute();
-        return $stmt->fetchAll(); // returns an array of arrays
+        return $stmt->fetchAll(); // returns an array of arrays (2D array) with all the products in the database (all the rows)
         // $stmt->close(); // close the statement
         $stmt = null; // close connection
     }

@@ -21,15 +21,15 @@ class AdminController
     }
     public function newProduct()
     {
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["submit"])) { // if the form is submitted
             $data = array(
-                "product_title" => $_POST["product_title"],
-                "product_description" => $_POST["product_description"],
+                "product_title" => $_POST["product_title"], // get the product title from the form and put it in the array $data with the key "product_title"
+                "product_description" => $_POST["product_description"], 
                 "short_desc" => $_POST["short_desc"],
-                "product_image" => $this->uploadPhoto(),
+                "product_image" => $this->uploadPhoto(), // get the product image from the form and put it in the array $data with the key "product_image" and call the function uploadPhoto() to upload the image
                 "product_category_id" => $_POST["product_category_id"],
             );
-            $result = Product::addProduct($data);
+            $result = Product::addProduct($data); // call the addProduct method in the Product class and pass the array $data as a parameter
             if ($result === "ok") {
                 Session::set("success", "Product added successfully");
                 Redirect::to("products");
