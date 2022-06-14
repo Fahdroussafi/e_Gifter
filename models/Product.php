@@ -2,36 +2,36 @@
 
 class Product
 {
+    // function that get all the products in products page in the frontend
     static public function getAll()
     {
         $stmt = DB::connect()->prepare('SELECT * FROM products');
         $stmt->execute();
         return $stmt->fetchAll(); // returns an array of arrays (2D array) with all the products in the database (all the rows)
-        // $stmt->close(); // close the statement
         $stmt = null; // close connection
     }
+    // function that get all the products randomly in the frontend in the homepage
     static public function getRandom($count)
     {
         $stmt = DB::connect()->prepare("SELECT * FROM products order by rand() limit " . $count);
         $stmt->execute();
         return $stmt->fetchAll();
-        // $stmt->close();
         $stmt = null;
     }
+    // function that filters the products in the frontend in the products page
     static public function getProductByCat($data)
     {
         $id = $data['id'];
         try {
             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
-            // $stmt = DB::connect()->prepare('SELECT products.*,(0) as liked FROM products WHERE product_category_id = :id');
             $stmt->execute(array(":id" => $id));
             return $stmt->fetchAll();
-            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }
     }
+    // function that show the product details in the frontend in the product details page
     static public function getProductById($data)
     {
         $id = $data['id'];
@@ -46,7 +46,7 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
-
+    // function that get the prices of the products in the frontend in the product details page
     static public function getValues($id)
     {
         try {
@@ -55,21 +55,20 @@ class Product
             $stmt->execute();
             $value = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $value;
-            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }
     }
-    static public function getPrices()
-    {
-        // get price id from codes table 
-        $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id= products.product_id;");
-        $stmt->execute();
-        $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
-        return $prices;
-    }
+    // static public function getPrices()
+    // {
+    //     $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id = products.product_id");
+    //     $stmt->execute();
+    //     $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
+    //     return $prices;
+    // }
 
+    // function that add a new product in the admin dashboard
     static public function addProduct($data)
     {
         $stmt = DB::connect()->prepare('INSERT INTO products (product_title,product_description,product_image,short_desc,product_category_id)
@@ -84,17 +83,15 @@ class Product
         } else {
             return 'error';
         }
-        // $stmt->close();
         $stmt = null;
     }
 
+    // function to add to stock of a product in the admin dashboard
     static public function addPrices($data)
     {
         $stmt = DB::connect()->prepare('SELECT price FROM prices WHERE product_id = :product_id and price = :price');
         $stmt->execute(array(":product_id" => $data['product_id'], ":price" => $data['price']));
         $count = $stmt->rowCount();
-        // echo $count;
-        // return;
         if ($count > 0) {
             return 'error';
         } else {
@@ -132,7 +129,6 @@ class Product
         } else {
             return 'error';
         }
-        // $stmt->close();
         $stmt = null;
     }
 
@@ -148,7 +144,6 @@ class Product
             } else {
                 return 'error';
             }
-            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();

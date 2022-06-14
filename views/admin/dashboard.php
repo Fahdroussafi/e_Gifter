@@ -13,11 +13,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
     
     $stock = new AdminController();
     $stock = $stock->getStock(); // get the stock of the products available in the store
-    // echo '<pre>';
-    // var_dump($stock);
-    // echo '</pre>';
-    // die();
-
+  
     $orders = new AdminController();
     $orders_list = $orders->displayOrders();
 

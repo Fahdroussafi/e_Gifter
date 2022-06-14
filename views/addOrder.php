@@ -4,10 +4,6 @@ $order = new OrdersController();
 foreach ($_SESSION as $name => $product) {
     
     if (str_starts_with($name,"products_")) {
-    //     echo '<pre>';
-    // var_dump($name);
-    // echo '</pre>';
-    // die();
 
     for ($i=0; $i < $product["qte"]; $i++) { 
         $data = array(

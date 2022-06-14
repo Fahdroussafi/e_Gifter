@@ -2,14 +2,15 @@
 
 class Category
 {
+    // function that get all the categories in the database
     static public function getAll()
     {
         $stmt = DB::connect()->prepare('SELECT * FROM categories');
         $stmt->execute();
         return $stmt->fetchAll();
-        // $stmt->close();
         $stmt = null;
     }
+    // function that add a new category in the admin dashboard
     static public function addCategory($data)
     {
         $stmt = DB::connect()->prepare('INSERT INTO categories (cat_title) VALUES (:cat_title)');
@@ -19,9 +20,9 @@ class Category
         } else {
             return 'error';
         }
-        // $stmt->close();
         $stmt = null;
     }
+    // function that delete a category in the admin dashboard
     static public function deleteCategory($data)
     {
         $id = $data['id'];
@@ -34,12 +35,12 @@ class Category
             } else {
                 return 'error';
             }
-            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }
     }
+    // function that update a category in the admin dashboard
     static public function editCategory($data)
     {
         $stmt = DB::connect()->prepare('UPDATE categories SET 
@@ -52,9 +53,10 @@ class Category
         } else {
             return 'error';
         }
-        // $stmt->close();
         $stmt = null;
     }
+
+    // function that get the category by id  when you try to update the category in the admin dashboard
     static public function getCategoryById($data)
     {
         $id = $data['id'];
@@ -63,10 +65,10 @@ class Category
             $stmt->execute(array(":id" => $id));
             $category = $stmt->fetch(PDO::FETCH_OBJ);
             return $category;
-            // $stmt->close();
             $stmt = null;
         } catch (PDOException $ex) {
             echo "erreur " . $ex->getMessage();
         }
     }
 }
+

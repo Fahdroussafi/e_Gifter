@@ -1,11 +1,5 @@
 <title>Cart</title>
 
-<?php
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '</pre>';
-// die;
-?>
 <!-- navbar -->
 <style>
     .mainabout {

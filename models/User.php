@@ -2,6 +2,7 @@
 
 class User
 {
+    // function that log in the user
     static public function login($data)
     {
         $username = $data["username"];
@@ -16,6 +17,7 @@ class User
         }
     }
 
+    // function that register the user
     static public function createUser($data)
     {
         $stmt = DB::connect()->prepare('INSERT INTO users (fullname,username,email,password) VALUES (:fullname,:username,:email,:password)');
@@ -31,6 +33,7 @@ class User
     }
 
 
+    // function that updates the user informations
     static function update($data)
     {
         $stmt = DB::connect()->prepare('UPDATE users SET fullname = :fullname, username = :username, email = :email WHERE `user_id` = :user_id');
@@ -46,6 +49,7 @@ class User
         $stmt = null;
     }
 
+    // function that get all the users in the admin dashboard
     static public function getAllClients()
     {
         // function that counts all the clients in the database 
@@ -55,6 +59,7 @@ class User
         $clients = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $clients;
     }
+    // function that get all the users in the clients section in the admin dashboard
     static public function ShowUsers()
     {
         // function that counts all the clients in the database 

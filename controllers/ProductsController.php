@@ -42,11 +42,11 @@ class ProductsController
         }
     }
 
-    public function getPricesValue()
-    {
-        $prices = Product::getPrices();
-        return $prices;
-    }
+    // public function getPricesValue()
+    // {
+    //     $prices = Product::getPrices();
+    //     return $prices;
+    // }
 
     public function emptyCart($id, $price)
     {

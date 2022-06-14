@@ -65,9 +65,6 @@ $orders = $data->getUserOrders();
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?= $order->price ?>
                         </td>
-                        <!-- <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
-                            <?= $order->total ?>
-                        </td> -->
                         <td class="px-6 py-4 text-base sm-text-sm text-[#080808] font-proza ">
                             <?= $order->code ?>
                         </td>

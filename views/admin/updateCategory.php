@@ -8,10 +8,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
         $category = new AdminController();
         $category->updateCategory();
     }
-    // echo '<pre>';
-    // var_dump($_POST);
-    // '</pre>';
-    // die();
 } else {
     Redirect::to("dashboard");
 }

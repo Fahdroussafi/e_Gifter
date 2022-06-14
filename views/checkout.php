@@ -16,10 +16,7 @@ if (isset($_POST["product_id"])) {
         echo "<script>window.location.href = 'cart';</script>";
 
     } else {
-        // if ($product->product_quantity < $_POST["product_qte"]) {
-        //     Session::set("info", "The Available Quantity is : $product->product_quantity");
-        //     Redirect::to("cart");
-        
+       
             $_SESSION["products_" . $product->product_id] = array(
                 "id" => $id,
                 "title" => $title,
@@ -29,8 +26,6 @@ if (isset($_POST["product_id"])) {
                 "total" => $selectedPrice * $_POST["product_qte"],
             );
             $_SESSION["totaux"] += $_SESSION["products_" . $product->product_id]["total"];
-            // show number of products in cart
-            // $_SESSION["count"] = count($_SESSION);
             $_SESSION["count"] += 1;
             Session::set("success", "Product added to cart successfully");
             Redirect::to("productslist");

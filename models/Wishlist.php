@@ -1,7 +1,7 @@
 <?php
 class Wishlist
 {
-
+    // function that get all the prducts added to the wishlist in the frontend in the wishlist page
     static public function getAll()
     {
         $stmt = DB::connect()->prepare('SELECT * FROM wishlist JOIN products JOIN categories on products.product_id = wishlist.product_id and categories.cat_id = products.product_category_id WHERE user_id = :id;');
@@ -9,7 +9,7 @@ class Wishlist
         return $stmt->fetchAll(); // returns an array of arrays
         $stmt = null; // close connection
     }
-
+    // function that to add into the wishlist
     static public function add($data)
     { {
             $stmt = DB::connect()->prepare('SELECT * FROM wishlist WHERE user_id = :user AND product_id = :product');
@@ -23,7 +23,7 @@ class Wishlist
             }
         }
     }
-
+    // function that to remove from the wishlist
     static public function remove($product_id)
     {
         $stmt = DB::connect()->prepare("DELETE FROM wishlist WHERE product_id = :product");

@@ -2,6 +2,7 @@
 class Order
 
 {
+    // function that get all the orders in the frontend in the orders page
     static public function getAll()
     {
         $stmt = DB::connect()->prepare('SELECT * FROM orders');
@@ -10,6 +11,7 @@ class Order
         $stmt = null;
     }
 
+    // function that create the order after its confirmed
     static public function createOrder($data)
     {
 
@@ -34,6 +36,7 @@ class Order
 
 
 
+    // function that get the random code for the order
     static public function selectCodes($price_id)
     {
         $code = self::gen_uid(6);
@@ -47,13 +50,12 @@ class Order
         $result = $stmt->fetchAll(PDO::FETCH_OBJ)[0];
         return $result->code_id;
     }
-
     static public function gen_uid($l = 15)
     {
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
     }
 
-
+    // function that get the order details for each user
     static public function getUserOrders($user_id)
     {
         $stmt = DB::connect()->prepare("SELECT users.user_id,orders.*,codes.code FROM users JOIN orders ON orders.user_id = users.user_id JOIN codes ON codes.code_id = orders.code_id WHERE users.user_id = :user_id");
@@ -62,6 +64,7 @@ class Order
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // function that get that displays all orders in the admin dashboard
     static public function displayOrders() {
         $stmt = DB::connect()->prepare('SELECT * FROM orders ORDER BY done_at DESC');
         $stmt->execute();
