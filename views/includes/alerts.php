@@ -41,3 +41,12 @@ if (isset($_COOKIE['info'])) {
     </div>
   </div>";
 }
+
+
+if(isset($_COOKIE["error_admin"])){
+  echo "<div class='flex justify-center w-auto px-64 mx-64 alert alert-error shadow-lg font-bold'>".$_COOKIE["error_admin"]."</div>";
+}
+
+if(isset($_COOKIE["success_admin"])){
+  echo "<div class='flex justify-center w-auto px-64 mx-64 alert alert-success shadow-lg font-bold'>".$_COOKIE["success_admin"]."</div>";
+}

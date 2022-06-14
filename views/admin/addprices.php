@@ -22,6 +22,7 @@ if (isset($_POST["submit"])) {
 
 <body>
 
+
     <!-- component -->
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -115,9 +116,11 @@ if (isset($_POST["submit"])) {
 
 
                 <!-- add to stock form -->
+
                 <?php
-                include('./views/includes/alerts.php')
-                ?>
+                    include('./views/includes/alerts.php')
+                    ?>
+
                 <div class="flex items-center justify-center p-12">
                     <div class="mx-auto w-full max-w-[550px]">
                         <form method="POST" enctype="multipart/form-data">
@@ -135,8 +138,8 @@ if (isset($_POST["submit"])) {
                                 <input type="number" name="quantity" placeholder="Quantity" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                             </div>
                             <div class="mb-5">
-                                <label for="Category" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Category
+                                <label for="Brand" class="mb-3 block text-base font-medium text-[#07074D]">
+                                    Brand
                                 </label>
                                 <select class="select w-full max-w-xs bg-white" name="product_id" id="">
                                     <?php foreach ($products as $product) : ?>

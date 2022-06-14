@@ -31,7 +31,7 @@ class AdminController
             );
             $result = Product::addProduct($data); // call the addProduct method in the Product class and pass the array $data as a parameter
             if ($result === "ok") {
-                Session::set("success", "Product added successfully");
+                Session::set("success_admin", "Product added successfully");
                 Redirect::to("products");
             } else {
                 echo $result;
@@ -50,12 +50,12 @@ class AdminController
             );
             $result = Product::addPrices($data);
             if ($result === "ok") {
-                Session::set("success", "Added to stock successfully");
+                Session::set("success_admin", "Added to stock successfully");
                 Redirect::to("addprices");
             } else {
                 echo $result;
                 if ($result === "error") {
-                    Session::set("error", "Price already exists in the product");
+                    Session::set("error_admin", "Price already exists in the product");
                     Redirect::to("addprices");
                 } else {
                     echo $result;
@@ -79,7 +79,7 @@ class AdminController
             );
             $result = Product::editProduct($data);
             if ($result === "ok") {
-                Session::set("success", "Product updated successfully");
+                Session::set("success_admin", "Product updated successfully");
                 Redirect::to("products");
             } else {
                 echo $result;
@@ -111,7 +111,7 @@ class AdminController
             );
             $result = Product::deleteProduct($data);
             if ($result === "ok") {
-                Session::set("error", "Product deleted successfully");
+                Session::set("error_admin", "Product deleted successfully");
                 Redirect::to("products");
             } else {
                 echo $result;
@@ -150,7 +150,7 @@ class AdminController
             );
             $result = Category::addCategory($data);
             if ($result === "ok") {
-                Session::set("success", "Category added successfully");
+                Session::set("success_admin", "Category added successfully");
                 Redirect::to("categories");
             } else {
                 echo $result;
@@ -165,7 +165,7 @@ class AdminController
             );
             $result = Category::deleteCategory($data);
             if ($result === "ok") {
-                Session::set("error", "Category deleted successfully");
+                Session::set("error_admin", "Category deleted successfully");
                 Redirect::to("categories");
             } else {
                 echo $result;
@@ -181,7 +181,7 @@ class AdminController
             );
             $result = Category::editCategory($data);
             if ($result === "ok") {
-                Session::set("success", "Category updated successfully");
+                Session::set("success_admin", "Category updated successfully");
                 Redirect::to("categories");
             } else {
                 echo $result;
