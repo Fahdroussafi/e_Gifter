@@ -108,10 +108,7 @@ $categories = $categories->getAllCategories();
                 <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div class="container mx-auto px-6 py-8">
                         <!-- <h3 class="text-[#080808] text-3xl font-medium">Products</h3> -->
-                        <?php
-                        include('./views/includes/alerts.php')
-                        ?>
-
+                      
                         <div class="my-2">
                             <a href="<?php echo BASE_URL ?>addCategory" class="btn btn-primary">
                                 Add Category
