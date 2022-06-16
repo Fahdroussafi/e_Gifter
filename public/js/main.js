@@ -1,8 +1,8 @@
 function getCatProducts($id) {
   const input = document.querySelector("#cat_id");
   const form = document.querySelector("#catPro");
-  input.value = $id;
-  form.submit();
+  input.value = $id; // set the value of the hidden input
+  form.submit(); // send the form to the same URL
 }
 
 function submitForm($id) {

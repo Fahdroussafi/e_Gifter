@@ -14,6 +14,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.2/dist/full.css" rel="stylesheet" type="text/css" /> -->
     <script src="https://www.paypal.com/sdk/js?client-id=AZw6O6tc7UhTWz2cNKSSzG_-ASZlWVO30PNwPFZpxiPKJyOfFuA5ugiPLfzwSpjS0wiCPv5kDW35__Yu&components=buttons"></script>
     <link href="./views/src/output.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./public/img/logo.png" />
     <script src="./public/js/main.js"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
