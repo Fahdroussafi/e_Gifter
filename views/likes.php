@@ -84,7 +84,13 @@ if (isset($_POST["remove"])) {
                     </tr>
             </tbody>
         <?php endforeach; ?>
-
+        <?php if (empty($wishlist)) : ?>
+            <tr class="border-b border-black ">
+                <td class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
+                    No products in wishlist
+                </td>
+            </tr>
+        <?php endif; ?>
         </table>
     </div>
 </section>
