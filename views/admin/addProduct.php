@@ -130,7 +130,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
                                 <label for="Short Description" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Short Description
                                 </label>
-                                <textarea row="5" cols="20" name="short_desc" placeholder="Short Description" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                                <textarea row="5" cols="20" maxlength="40" name="short_desc" placeholder="Short Description" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                             </div>
                             <div class="mb-5">
                                 <label for="Category" class="mb-3 block text-base font-medium text-[#07074D]">

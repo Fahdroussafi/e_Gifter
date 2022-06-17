@@ -9,12 +9,10 @@ if (isset($_POST["product_id"])) {
 
     $data = new ProductsController();
     $product = $data->getProduct();
-    // $price = $data->getValue();
 
     if ($_SESSION["products_" . $id]["title"] == $_POST["product_title"]) {
-        echo "<script>alert('Product already added to cart');</script>";
-        echo "<script>window.location.href = 'cart';</script>";
-
+        Session::set("error", "Product already added to cart");
+        Redirect::to("productslist");
     } else {
        
             $_SESSION["products_" . $product->product_id] = array(
