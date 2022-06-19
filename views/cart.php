@@ -8,7 +8,6 @@
 
     li {
         color: #080808;
-        /* font-weight: bold; */
     }
 </style>
 <section class="mainabout">
@@ -30,7 +29,6 @@
                                 <div class="pt-5">
                                     <h6 class="mb-0"><a href="<?php echo BASE_URL; ?>productslist" class="text-body font-proza text-3xl"><i class="fas fa-long-arrow-alt-left mx-2"></i>Back to shop</a></h6>
                                 </div>
-                                <!-- <th class="hidden md:table-cell"></th> -->
                                 <th class="text-left text-[#080808]">Product</th>
                                 <th class="lg:text-right text-left pl-5 lg:pl-0 text-[#080808]">
                                     <span class="lg:hidden text-[#080808]" title="Quantity">Qtd</span>
@@ -40,9 +38,7 @@
                                 <th class="text-right text-[#080808]">Total price</th>
                             </tr>
                         </thead>
-                        <!-- <tbody>
 
-                    </tbody> -->
                         <?php foreach ($_SESSION as $name => $product) : ?>
                             <?php if (substr($name, 0, 9) == "products_") : ?>
 
@@ -55,7 +51,7 @@
                                         <form method="POST" action="<?php echo BASE_URL; ?>cancelcart">
                                             <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>">
                                             <input type="hidden" name="product_price" value="<?php echo $product["total"]; ?>">
-                                            <button type="submit" class="text-gray-700 md:ml-4">
+                                            <button type="submit">
                                                 <small class="text-red-700 underline">Remove item</small>
                                             </button>
                                         </form>
@@ -66,7 +62,6 @@
                                                 <div class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-[#080808] focus:text-[#080808]">
                                                     <?php echo $product["qte"]; ?>
                                                 </div>
-                                                <!-- <input type="number" value="2" class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-[#080808] focus:text-[#080808]" /> -->
                                             </div>
                                         </div>
                                     </td>
@@ -76,11 +71,10 @@
                                         </span>
                                     </td>
 
-                                    <!-- </td> -->
                                     <td class="text-right ">
                                         <span class="text-sm lg:text-base font-medium text-[#080808]">
                                             <?php echo $product["total"]; ?> $
-                                        </span>
+                                        </span> 
                                     </td>
                                 </tr>
                             <?php endif; ?>
@@ -95,20 +89,19 @@
                             <div class="p-4 bg-gray-100 rounded-full text-[#080808]">
                                 <h1 class="ml-2 font-bold uppercase text-[#080808]">Order Details</h1>
                             </div>
-
+ 
                             <div class="flex justify-between pt-4 border-b">
                                 <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-[#080808]">
                                     Subtotal
                                 </div>
                                 <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-[#080808]">
                                     <?php echo isset($_SESSION["totaux"]) ? $_SESSION["totaux"] : 0; ?>
-                                    <strong id="amount" data-amount="<?php echo isset($_SESSION["totaux"]) ? $_SESSION["totaux"] : 0;  ?>">
-                                    </strong>
+                                    <strong id="amount" data-amount="<?php echo isset($_SESSION["totaux"]) ? $_SESSION["totaux"] : 0;  ?>">$</strong>
                                 </div>
-
                             </div>
-                            <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0) : ?>
-                                <form method="post" action="<?php echo BASE_URL; ?>emptycart">
+
+                            <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0) : ?> <!-- if there is at least one product in the cart -->
+                                <form method="POST" action="<?php echo BASE_URL; ?>emptycart">
                                     <button type="submit" class="bg-[#CC0000] text-[#FBF8F3] rounded-full w-full text-center h-10 pt-1 cursor-pointer font-bold font-proza duration-500">
                                        Clear Cart
                                     </button>
@@ -116,18 +109,13 @@
                             <?php endif; ?>
 
                             <div class="py-5">
-
-                                <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0 && isset($_SESSION["logged"])) : ?>
+                                <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0 && isset($_SESSION["logged"])) : ?> <!-- if there is at least one product in the cart and the user is logged in -->
                                     <div id="paypal-button-container"></div>
-                                <?php elseif (isset($_SESSION["count"]) && $_SESSION["count"] > 0) : ?>
+                                <?php elseif (isset($_SESSION["count"]) && $_SESSION["count"] > 0) : ?> <!-- if there is at least one product in the cart but the user is not logged in -->
                                     <a href="<?php echo BASE_URL; ?>login" class="btn btn-link">Login to complete your orders</a>
                                 <?php endif; ?>
-                                <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder"></form>
-                                <!-- <form method="post" id="addOrder" action="<?php echo BASE_URL; ?>addOrder">
-                                <button class="btn btn-primary">buy</button>
-                                </form> -->
+                                <form method="POST" id="addOrder" action="<?php echo BASE_URL; ?>addOrder"></form>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -139,18 +127,18 @@
 <?php
 include './views/includes/footer.php';
 ?>
-<!-- end footer -->
+<!-- end footer --> 
 
 <script>
-    let amount = document.querySelector('#amount').dataset.amount;
-    let finalAmount = Math.floor(amount);
+    let amount = document.querySelector('#amount').dataset.amount; // get the amount of the cart
+    let finalAmount = Math.floor(amount);  
     paypal.Buttons({
         createOrder: function(data, actions) {
             // This function sets up the details of the transaction, including the amount and line item details.
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: finalAmount.toString()
+                        value: finalAmount.toString() // total amount of the cart (to string because it's a number)
                     }
                 }]
             });
@@ -159,8 +147,8 @@ include './views/includes/footer.php';
             // This function captures the funds from the transaction.
             return actions.order.capture().then(function(details) {
                 // This function shows a transaction success message to your buyer.
-                alert('Transaction completed by ' + details.payer.name.given_name);
-                document.querySelector('#addOrder').submit();
+                // alert('Transaction completed by ' + details.payer.name.given_name);
+                document.querySelector('#addOrder').submit(); // submit the form to add the order to the database
             });
         }
     }).render('#paypal-button-container');

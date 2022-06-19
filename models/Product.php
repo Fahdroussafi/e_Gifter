@@ -24,7 +24,7 @@ class Product
         $id = $data['id'];
         try {
             $stmt = DB::connect()->prepare('SELECT * FROM products WHERE product_category_id = :id');
-            $stmt->execute(array(":id" => $id));
+            $stmt->execute(array(":id" => $id)); // bind the value of the id to the id parameter
             return $stmt->fetchAll();
             $stmt = null;
         } catch (PDOException $ex) {
@@ -60,14 +60,6 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
-    // static public function getPrices()
-    // {
-    //     $stmt = DB::connect()->prepare("SELECT products.*,prices.* FROM products JOIN prices ON prices.product_id = products.product_id");
-    //     $stmt->execute();
-    //     $prices = $stmt->fetchAll(PDO::FETCH_OBJ);
-    //     return $prices;
-    // }
-
     // function that add a new product in the admin dashboard
     static public function addProduct($data)
     {

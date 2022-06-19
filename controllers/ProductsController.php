@@ -42,12 +42,6 @@ class ProductsController
         }
     }
 
-    // public function getPricesValue()
-    // {
-    //     $prices = Product::getPrices();
-    //     return $prices;
-    // }
-
     public function emptyCart($id, $price)
     {
         unset($_SESSION["products_" . $id]);

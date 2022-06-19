@@ -89,7 +89,7 @@ if (isset($_POST["remove"])) {
                 <td class="px-6 py-4 font-medium text-[#080808] whitespace-nowrap text-base sm-text-sm font-proza ">
                     No products in wishlist
                 </td>
-            </tr>
+            </tr> 
         <?php endif; ?>
         </table>
     </div>

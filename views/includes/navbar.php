@@ -65,7 +65,13 @@
                         <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                             <div class="card-body">
                                 <div class="card-actions">
-                                    <a class="btn btn-block sm:text-sm" href="<?php echo BASE_URL; ?>cart">View cart</a>
+                                    <a class="btn btn-block sm:text-sm" href="<?php echo BASE_URL; ?>cart">View cart
+                                    <?php if (isset($_SESSION["count"]) && $_SESSION["count"] > 0 ) : ?>
+                                       (<?php echo $_SESSION["count"]; ?>)
+                                       <?php else : ?>
+                                            (0)
+                                    <?php endif; ?>
+                                </a>
                                 </div>
                             </div>
                         </div>

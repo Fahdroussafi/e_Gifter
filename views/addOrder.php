@@ -12,7 +12,6 @@ foreach ($_SESSION as $name => $product) {
             "qte" => 1,
             "price" => $product["selectedPrice"],
             "price_id" => $product["price_id"],
-            // "user_id" => $_SESSION["user_id"],
             "total" => $product["total"],
             "name" => $name
             

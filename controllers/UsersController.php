@@ -9,7 +9,7 @@ class UsersController
             $result = User::login($data);
             if ($result->username === $_POST["username"] && password_verify($_POST["password"], $result->password)) {
                 $_SESSION["logged"] = true;
-                $_SESSION["username"] = $result->username;
+                $_SESSION["username"] = $result->username; // username is the name of the column in the database
                 $_SESSION["fullname"] = $result->fullname;
                 $_SESSION["admin"] = $result->admin;
                 $_SESSION["user_id"] = $result->user_id;

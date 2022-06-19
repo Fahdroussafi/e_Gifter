@@ -10,8 +10,6 @@
     <script src="https://kit.fontawesome.com/bc3854343b.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.2/dist/full.css" rel="stylesheet" type="text/css" /> -->
     <script src="https://www.paypal.com/sdk/js?client-id=AZw6O6tc7UhTWz2cNKSSzG_-ASZlWVO30PNwPFZpxiPKJyOfFuA5ugiPLfzwSpjS0wiCPv5kDW35__Yu&components=buttons"></script>
     <link href="./views/src/output.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="./public/img/logo.png" />
@@ -19,4 +17,3 @@
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
 </head>
-

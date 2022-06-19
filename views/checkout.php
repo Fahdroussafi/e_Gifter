@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST["product_id"])) {
-    $id = $_POST["product_id"];
+    $id = $_POST["product_id"]; // product id from cart page (hidden input) 
     $price_id = $_POST["price_id"];
     $qte = $_POST["product_qte"];
     $title = $_POST["product_title"];
@@ -16,7 +16,7 @@ if (isset($_POST["product_id"])) {
     } else {
        
             $_SESSION["products_" . $product->product_id] = array(
-                "id" => $id,
+                "id" => $id, // product id from cart page (hidden input)
                 "title" => $title,
                 "price_id" => $price_id,
                 "selectedPrice" => $selectedPrice,

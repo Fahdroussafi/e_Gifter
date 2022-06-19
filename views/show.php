@@ -73,7 +73,6 @@ include('./views/includes/alerts.php')
                             </div>
                         </div>
                         <div class="flex flex-col">
-                            <!-- <form method="POST" action="<?php echo BASE_URL; ?>checkout"> -->
 
                                 <span class="title-font font-medium text-2xl text-gray-900">Starts At 10 $</span>
                                 <input type="number" name="product_qte" id="product_qte" class="mx-1 text-black border-2 w-60  border-black rounded-lg pt-1 shadow-lg bg-[F4F5E2]" value="1" min="1">
