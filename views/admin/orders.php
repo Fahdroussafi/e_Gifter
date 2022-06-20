@@ -1,10 +1,12 @@
 <?php
-  if(isset($_SESSION['admin']) && $_SESSION['admin'] == true){
-    $data = new OrdersController();
-    $orders = $data->getAllOrders();
-  }else{
-      Redirect::to("home");
+  // if(isset($_SESSION['admin']) && $_SESSION['admin'] == true)
+  {
+    $data = new OrdersController(); // new instance of OrdersController class
+    $orders = $data->getAllOrders(); // get all orders from database and store it in $orders
   }
+  // else{
+  //     Redirect::to("home");
+  // }
 ?>
 <div class="container">
   <div class="row my-5">

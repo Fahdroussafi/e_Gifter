@@ -10,14 +10,10 @@ class OrdersController
     public function addOrder($data)
     {
         $result = Order::createOrder($data);
-        // var_dump($result);
-        // die();
         if ($result === "ok") {
             unset($_SESSION[$data['name']]);
             unset($_SESSION['total']);
             unset($_SESSION['totaux']);
-            // Session::set("success", "Commande effectuée");
-            // Redirect::to("home");
         }
     }
 

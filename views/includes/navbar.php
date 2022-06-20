@@ -56,7 +56,6 @@
                     <?php } ?>
                 <?php endif; ?>
 
-                <!-- <div class="sm:flex-none"> -->
                     <div class="dropdown dropdown-end">
                         <button tabindex="0" class="rounded-full">
                             <img src="./public/img/shoppping.png" alt="shopping-cart">

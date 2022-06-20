@@ -89,18 +89,18 @@ class AdminController
     // UPLOAD A NEW PRODUCT IMAGE
     public function uploadPhoto($oldImage = null)
     {
-        $dir = "public/uploads";
-        $time = time();
-        $name = str_replace(' ', '-', strtolower($_FILES["image"]["name"]));
-        $type = $_FILES["image"]["type"];
-        $ext = substr($name, strpos($name, '.'));
-        $ext = str_replace('.', '', $ext);
-        $name = preg_replace("/\.[^.\s]{3,4}$/", "", $name);
-        $imageName = $name . '-' . $time . '.' . $ext;
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $dir . "/" . $imageName)) {
-            return $imageName;
+        $dir = "public/uploads"; // set the directory where the images will be uploaded
+        $time = time(); // get the current time
+        $name = str_replace(' ', '-', strtolower($_FILES["image"]["name"])); // get the name of the image and replace spaces with dashes
+        $type = $_FILES["image"]["type"]; // get the type of the image
+        $ext = substr($name, strpos($name, '.')); // get the extension of the image
+        $ext = str_replace('.', '', $ext); // remove the dot from the extension of the image
+        $name = preg_replace("/\.[^.\s]{3,4}$/", "", $name); // remove the extension from the name
+        $imageName = $name . '-' . $time . '.' . $ext; // create the image name
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $dir . "/" . $imageName)) { // if the image is uploaded successfully then move it to the directory
+            return $imageName; 
         }
-        return $oldImage;
+        return $oldImage; 
     }
     // REMOVE A PRODUCT
     public function removeProduct()
